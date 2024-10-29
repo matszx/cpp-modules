@@ -52,7 +52,7 @@ void	PhoneBook::add()
 
 static void	display(std::string s)
 {
-	std::cout << RESET << ITALIC;
+	std::cout << ITALIC;
 	if (s.length() <= 10)
 	{
 		for (size_t i = 10; i > s.length(); i--)
