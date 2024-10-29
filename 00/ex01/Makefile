@@ -2,9 +2,9 @@ NAME 			=	phonebook
 CC 				=	c++
 CFLAGS 			=	-Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
-SRC_FILES 		=	contact.cpp \
+SRC_FILES 		=	main.cpp \
 					phonebook.cpp \
-					main.cpp
+					contact.cpp
 
 SRC_DIR			=	src/
 SRC				=	$(addprefix $(SRC_DIR), $(SRC_FILES))
