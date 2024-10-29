@@ -3,10 +3,12 @@
 
 # include "contact.hpp"
 
-# define PB		"\x1b[1;38;5;104m"	// purple blue bold
-# define VM		"\x1b[1;38;5;203m"	// vermillion bold
-# define ITALIC		"\x1b[3m"			// italic
+# define BOLD	"\x1b[1m"			// bold
+# define ITALIC	"\x1b[3m"			// italic
+# define RED	"\x1b[1;38;5;203m"	// vermillion bold
 # define RESET	"\x1b[0m"			// reset
+
+std::string trim(std::string s);
 
 class PhoneBook
 {

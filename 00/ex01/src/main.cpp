@@ -10,6 +10,7 @@ int	main()
 	{
 		std::cout << "phonebook > ";
 		std::getline(std::cin, input);
+		input = trim(input);
 		if (input == "ADD")
 			phonebook.add();
 		else if (input == "SEARCH")
