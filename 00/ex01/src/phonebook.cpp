@@ -1,4 +1,3 @@
-#include <iostream>
 #include "../inc/phonebook.hpp"
 
 std::string trim(std::string s)
