@@ -22,7 +22,7 @@ PhoneBook::PhoneBook()
 
 PhoneBook::~PhoneBook() {}
 
-static std::string	add_prompt(std::string s)
+static std::string	add_prompt(const std::string s)
 {
 	std::string	input;
 
@@ -45,11 +45,10 @@ void	PhoneBook::add()
 	this->contacts[this->n % 8].setNickname(add_prompt("Nickname"));
 	this->contacts[this->n % 8].setNumber(add_prompt("Phone number"));
 	this->contacts[this->n % 8].setSecret(add_prompt("Darkest secret"));
-	if (this->n < 8)
-		this->n++;
+	this->n++;
 }
 
-static void	display(std::string s)
+static void	display(const std::string s)
 {
 	std::cout << ITALIC;
 	if (s.length() <= 10)
@@ -70,13 +69,18 @@ static void	display(std::string s)
 void	PhoneBook::search() 
 {
 	std::string	input;
+	int			nrow;
 
 	if (this->n == 0)
 		return (std::cout << RED "Phonebook empty" RESET << std::endl, void());
+	if (this->n > 8)
+		nrow = 8;
+	else
+		nrow = this->n;
 	std::cout << " =========================================== " << std::endl;
 	std::cout << "|     Index|First name| Last name|  Nickname|" << std::endl;
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
-	for (int i = 0; i < this->n; i++)
+	for (int i = 0; i < nrow; i++)
 	{
 		std::cout << "|         " << ITALIC << i + 1 << RESET "|";
 		display(this->contacts[i].getFirstName());
@@ -87,12 +91,12 @@ void	PhoneBook::search()
 		std::cout << "|" << std::endl;
 	}
 	std::cout << " =========================================== " << std::endl;
-	while ((input.length() != 1 || input[0] < 1 + '0' || input[0] > this->n + '0') && !std::cin.eof())
+	while ((input.length() != 1 || input[0] < 1 + '0' || input[0] > nrow + '0') && !std::cin.eof())
 	{
 		std::cout << "Index of user: ";
 		std::getline(std::cin, input);
 		input = trim(input);
-		if (input.length() != 1 || input[0] < 1 + '0' || input[0] > this->n + '0')
+		if (input.length() != 1 || input[0] < 1 + '0' || input[0] > nrow + '0')
 			std::cout << RED "Invalid index" RESET << std::endl;
 	}
 	if (!std::cin.eof())
