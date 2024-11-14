@@ -11,7 +11,7 @@ int	main(int ac, char **av)
 	std::ifstream	infile;
 	std::ofstream	outfile;
 	std::string		buffer;
-	size_t			pos;
+	size_t			i;
 
 	infile.open(av[1]);
 	outfile.open(((std::string)av[1]).append(".replace").c_str());
@@ -19,10 +19,16 @@ int	main(int ac, char **av)
 	{
 		while (std::getline(infile, buffer))
 		{
-			while ((pos = buffer.find(s1)) != std::string::npos)
+			i = 0;
+			while (i < buffer.length())
 			{
-				buffer.erase(pos, s1.length());
-				buffer.insert(pos, s2);
+				if (!buffer.compare(i, s1.length(), s1))
+				{
+					buffer.erase(i, s1.length());
+					buffer.insert(i, s2);
+					i += s2.length();
+				}
+				i++;
 			}
 			outfile << buffer << std::endl;
 		}
