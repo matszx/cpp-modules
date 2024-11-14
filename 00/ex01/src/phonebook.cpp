@@ -40,11 +40,11 @@ static std::string	add_prompt(const std::string s)
 
 void	PhoneBook::add() 
 {
-	this->contacts[this->n % 8].setFirstName(add_prompt("First name"));
-	this->contacts[this->n % 8].setLastName(add_prompt("Last name"));
-	this->contacts[this->n % 8].setNickname(add_prompt("Nickname"));
-	this->contacts[this->n % 8].setNumber(add_prompt("Phone number"));
-	this->contacts[this->n % 8].setSecret(add_prompt("Darkest secret"));
+	this->contacts[this->n % CONTACT_MAX].setFirstName(add_prompt("First name"));
+	this->contacts[this->n % CONTACT_MAX].setLastName(add_prompt("Last name"));
+	this->contacts[this->n % CONTACT_MAX].setNickname(add_prompt("Nickname"));
+	this->contacts[this->n % CONTACT_MAX].setNumber(add_prompt("Phone number"));
+	this->contacts[this->n % CONTACT_MAX].setSecret(add_prompt("Darkest secret"));
 	this->n++;
 }
 
@@ -73,8 +73,8 @@ void	PhoneBook::search()
 
 	if (this->n == 0)
 		return (std::cout << RED "Phonebook empty" RESET << std::endl, void());
-	if (this->n > 8)
-		nrow = 8;
+	if (this->n > CONTACT_MAX)
+		nrow = CONTACT_MAX;
 	else
 		nrow = this->n;
 	std::cout << " =========================================== " << std::endl;
