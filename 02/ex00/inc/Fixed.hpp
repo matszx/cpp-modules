@@ -3,6 +3,9 @@
 
 # include <iostream>
 
+# define DEBUG	"\x1b[2;38;5;110m"
+# define RESET	"\x1b[0m"
+
 class Fixed
 {
 	private:
