@@ -4,6 +4,9 @@
 # include <iostream>
 # include <cmath>
 
+# define DEBUG	"\x1b[2;38;5;110mdebug -> "
+# define RESET	"\x1b[0m"
+
 class Fixed
 {
 	private:
@@ -21,5 +24,7 @@ class Fixed
 		int		toInt(void) const;
 		float	toFloat(void) const;
 };
+
+std::ostream&	operator<<(std::ostream &out, const Fixed& f);
 
 #endif
