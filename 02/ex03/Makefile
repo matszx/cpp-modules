@@ -3,7 +3,9 @@ CC 				=	c++
 CFLAGS 			=	-Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 SRC_FILES 		=	main.cpp \
-					Fixed.cpp
+					Fixed.cpp \
+					Point.cpp \
+					bsp.cpp
 
 SRC_DIR			=	src/
 SRC				=	$(addprefix $(SRC_DIR), $(SRC_FILES))

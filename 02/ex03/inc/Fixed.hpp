@@ -17,7 +17,6 @@ class Fixed
 	// attributes
 		int					_value;
 		static const int	_fbits;
-
 	public:
 	// constructors
 		Fixed(void);
