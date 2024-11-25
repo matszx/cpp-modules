@@ -9,28 +9,28 @@ const int	Fixed::_fbits = 8;
 Fixed::Fixed(void)
 {
 	if (DEBUG)
-		std::cout << DC "Fixed: default constructor called" RESET << std::endl;
+		std::cout << DB "Fixed: default constructor called" RESET << std::endl;
 	this->_value = 0;
 }
 
 Fixed::Fixed(int const val)
 {
 	if (DEBUG)
-		std::cout << DC "Fixed: int constructor called" RESET << std::endl;
+		std::cout << DB "Fixed: int constructor called" RESET << std::endl;
 	this->_value = val << this->_fbits;
 }
 
 Fixed::Fixed(float const val)
 {
 	if (DEBUG)
-		std::cout << DC "Fixed: float constructor called" RESET << std::endl;
+		std::cout << DB "Fixed: float constructor called" RESET << std::endl;
 	this->_value = roundf(val * (1 << this->_fbits));
 }
 
 Fixed::Fixed(const Fixed& f)
 {
 	if (DEBUG)
-		std::cout << DC "Fixed: copy constructor called" RESET << std::endl;
+		std::cout << DB "Fixed: copy constructor called" RESET << std::endl;
 	*this = f;
 }
 
@@ -39,7 +39,7 @@ Fixed::Fixed(const Fixed& f)
 Fixed::~Fixed(void)
 {
 	if (DEBUG)
-		std::cout << DC "Fixed: default destructor called" RESET << std::endl;
+		std::cout << DB "Fixed: default destructor called" RESET << std::endl;
 }
 
 // OPERATORS ---------------------------------------------------------------- //
@@ -47,7 +47,7 @@ Fixed::~Fixed(void)
 Fixed&	Fixed::operator=(const Fixed& f)
 {
 	if (DEBUG)
-		std::cout << DC "Fixed: assignment operator called" RESET << std::endl;
+		std::cout << DB "Fixed: assignment operator called" RESET << std::endl;
 	this->_value = f.getRawBits();
 	return (*this);
 }
@@ -128,25 +128,21 @@ Fixed	Fixed::operator--(void)
 	return (*this);
 }
 
-// GETTERS ------------------------------------------------------------------ //
+// METHODS ------------------------------------------------------------------ //
 
 int Fixed::getRawBits(void) const
 {
 	if (DEBUG)
-		std::cout << DC "Fixed: getRawBits member function called" RESET << std::endl;
+		std::cout << DB "Fixed: getRawBits method called" RESET << std::endl;
 	return (this->_value);
 }
-
-// SETTERS ------------------------------------------------------------------ //
 
 int Fixed::setRawBits(int const raw)
 {
 	if (DEBUG)
-		std::cout << DC "Fixed: setRawBits member function called" RESET << std::endl;
+		std::cout << DB "Fixed: setRawBits method called" RESET << std::endl;
 	return (this->_value = raw);
 }
-
-// METHODS ------------------------------------------------------------------ //
 
 int	Fixed::toInt(void) const
 {

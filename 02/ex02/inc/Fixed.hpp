@@ -6,7 +6,7 @@
 
 # define DEBUG		false
 
-# define DC			"\x1b[2;38;5;110m"
+# define DB			"\x1b[2;38;5;102m"
 # define BOLD		"\x1b[1m"
 # define UNDERLINE	"\x1b[4m"
 # define RESET		"\x1b[0m"

@@ -4,21 +4,28 @@
 # include <iostream>
 # include <cmath>
 
-# define DEBUG	"\x1b[2;38;5;110m"
+# define DEBUG	true
+
+# define DB		"\x1b[2;38;5;102m"
 # define RESET	"\x1b[0m"
 
 class Fixed
 {
 	private:
+	// attributes
 		int					_value;
 		static const int	_fbits;
 	public:
+	// constructors
 		Fixed(void);
 		Fixed(int const val);
 		Fixed(float const val);
 		Fixed(const Fixed& f);
+	// destructors
 		~Fixed(void);
+	// operators
 		Fixed&	operator=(const Fixed& f);
+	// methods
 		int		getRawBits(void) const;
 		int		setRawBits(int const raw);
 		int		toInt(void) const;

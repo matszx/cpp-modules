@@ -1,66 +1,86 @@
 #include "../inc/Fixed.hpp"
 
+// CONSTANTS ---------------------------------------------------------------- //
+
 const int	Fixed::_fbits = 8;
+
+// CONSTRUCTORS ------------------------------------------------------------- //
 
 Fixed::Fixed(void)
 {
-	std::cout << DEBUG "Fixed: default constructor called" RESET << std::endl;
+	if (DEBUG)
+		std::cout << DB "Fixed: default constructor called" RESET << std::endl;
 	this->_value = 0;
 }
 
 Fixed::Fixed(int const val)
 {
-	std::cout << DEBUG "Fixed: int constructor called" RESET << std::endl;
+	if (DEBUG)
+		std::cout << DB "Fixed: int constructor called" RESET << std::endl;
 	this->_value = val << this->_fbits;
 }
 
 Fixed::Fixed(float const val)
 {
-	std::cout << DEBUG "Fixed: float constructor called" RESET << std::endl;
+	if (DEBUG)
+		std::cout << DB "Fixed: float constructor called" RESET << std::endl;
 	this->_value = roundf(val * (1 << this->_fbits));
 }
 
 Fixed::Fixed(const Fixed& f)
 {
-	std::cout << DEBUG "Fixed: copy constructor called" RESET << std::endl;
+	if (DEBUG)
+		std::cout << DB "Fixed: copy constructor called" RESET << std::endl;
 	*this = f;
 }
 
+// DESTRUCTORS -------------------------------------------------------------- //
+
 Fixed::~Fixed(void)
 {
-	std::cout << DEBUG "Fixed: default destructor called" RESET << std::endl;
+	if (DEBUG)
+		std::cout << DB "Fixed: default destructor called" RESET << std::endl;
 }
+
+// OPERATORS ---------------------------------------------------------------- //
 
 Fixed&	Fixed::operator=(const Fixed& f)
 {
-	std::cout << DEBUG "Fixed: assignment operator called" RESET << std::endl;
+	if (DEBUG)
+		std::cout << DB "Fixed: assignment operator called" RESET << std::endl;
 	this->_value = f.getRawBits();
-	return *this;
+	return (*this);
 }
+
+// METHODS ------------------------------------------------------------------ //
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << DEBUG "Fixed: getRawBits member function called" RESET << std::endl;
-	return this->_value;
+	if (DEBUG)
+		std::cout << DB "Fixed: getRawBits method called" RESET << std::endl;
+	return (this->_value);
 }
 
 int Fixed::setRawBits(int const raw)
 {
-	std::cout << DEBUG "Fixed: setRawBits member function called" RESET << std::endl;
-	return this->_value = raw;
+	if (DEBUG)
+		std::cout << DB "Fixed: setRawBits method called" RESET << std::endl;
+	return (this->_value = raw);
 }
 
 int	Fixed::toInt(void) const
 {
-	return this->_value >> this->_fbits;
+	return (this->_value >> this->_fbits);
 }
 
 float Fixed::toFloat(void) const
 {
-	return static_cast<float>(this->_value) / static_cast<float>(1 << this->_fbits);
+	return (static_cast<float>(this->_value) / static_cast<float>(1 << this->_fbits));
 }
+
+// STREAM OVERLOAD ---------------------------------------------------------- //
 
 std::ostream&	operator<<(std::ostream &out, const Fixed& f)
 {
-	return out << f.toFloat();
+	return (out << f.toFloat());
 }
