@@ -10,7 +10,8 @@ Point::~Point(void) {}
 
 Point& Point::operator=(const Point& p)
 {
-	(void)p;
+	const_cast<Fixed&>(this->_x) = p.getX();
+	const_cast<Fixed&>(this->_y) = p.getY();
 	return (*this);
 }
 
