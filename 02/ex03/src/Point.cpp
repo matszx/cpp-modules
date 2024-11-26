@@ -4,14 +4,14 @@ Point::Point(void): _x(0), _y(0) {}
 
 Point::Point(const float x, const float y): _x(x), _y(y) {}
 
-Point::Point(const Point& p): _x(p.getX()), _y(p.getY()) {}
+Point::Point(const Point& p): _x(p._x), _y(p._y) {}
 
 Point::~Point(void) {}
 
 Point& Point::operator=(const Point& p)
 {
-	const_cast<Fixed&>(this->_x) = p.getX();
-	const_cast<Fixed&>(this->_y) = p.getY();
+	const_cast<Fixed&>(this->_x) = p._x;
+	const_cast<Fixed&>(this->_y) = p._y;
 	return (*this);
 }
 
