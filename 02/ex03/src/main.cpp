@@ -1,4 +1,3 @@
-#include "../inc/Fixed.hpp"
 #include "../inc/Point.hpp"
 
 int	main(void) 
