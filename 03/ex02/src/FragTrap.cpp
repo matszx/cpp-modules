@@ -3,7 +3,7 @@
 FragTrap::FragTrap(void): ClapTrap()
 {
 	if (DEBUG)
-		std::cout << DB "FragTrap: default constrcutor called" RESET << std::endl;
+		std::cout << DB "FragTrap: default constructor called" RESET << std::endl;
 	this->_name = "FragTrap";
 	this->_health = 100;
 	this->_energy = 100;

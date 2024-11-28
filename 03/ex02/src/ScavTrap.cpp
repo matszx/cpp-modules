@@ -3,7 +3,7 @@
 ScavTrap::ScavTrap(void): ClapTrap()
 {
 	if (DEBUG)
-		std::cout << DB "ScavTrap: default constrcutor called" RESET << std::endl;
+		std::cout << DB "ScavTrap: default constructor called" RESET << std::endl;
 	this->_name = "ScavTrap";
 	this->_health = 100;
 	this->_energy = 50;
