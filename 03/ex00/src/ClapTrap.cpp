@@ -25,17 +25,6 @@ ClapTrap::~ClapTrap(void)
 		std::cout << DB "ClapTrap: default destructor called" RESET << std::endl;
 }
 
-ClapTrap&	ClapTrap::operator=(ClapTrap& src)
-{
-	if (DEBUG)
-		std::cout << DB "ClapTrap: assignment operator called" RESET << std::endl;
-	this->_name = src._name;
-	this->_health = src._health;
-	this->_energy = src._energy;
-	this->_damage = src._damage;
-	return (*this);
-}
-
 ClapTrap&	ClapTrap::operator=(const ClapTrap& src)
 {
 	if (DEBUG)

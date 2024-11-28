@@ -24,7 +24,6 @@ class ClapTrap
 	// destructors
 		~ClapTrap(void);
 	// operators overload
-		ClapTrap&	operator=(ClapTrap& src);
 		ClapTrap&	operator=(const ClapTrap& src);
 	// methods
 		void	attack(const std::string& target);
