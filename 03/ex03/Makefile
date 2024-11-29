@@ -1,11 +1,12 @@
-NAME 			=	fragtrap
+NAME 			=	diamondtrap
 CC 				=	c++
 CFLAGS 			=	-Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 SRC_FILES 		=	main.cpp \
 					ClapTrap.cpp \
 					ScavTrap.cpp \
-					FragTrap.cpp
+					FragTrap.cpp \
+					DiamondTrap.cpp
 
 SRC_DIR			=	src/
 SRC				=	$(addprefix $(SRC_DIR), $(SRC_FILES))

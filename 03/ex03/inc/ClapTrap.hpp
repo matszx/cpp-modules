@@ -1,12 +1,11 @@
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#pragma once
 
-# include <iostream>
+#include <iostream>
 
-# define DEBUG	true
+#define DEBUG	true
 
-# define DB		"\x1b[2;38;5;102m"
-# define RESET	"\x1b[0m"
+#define DB		"\x1b[2;38;5;102m"
+#define RESET	"\x1b[0m"
 
 class ClapTrap
 {
@@ -30,5 +29,3 @@ class ClapTrap
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 };
-
-#endif
