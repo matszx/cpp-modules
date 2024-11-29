@@ -79,3 +79,8 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	}
 	std::cout << std::endl;
 }
+
+void	ClapTrap::printStats(void)
+{
+	std::cout << this->_name << " stats: " << this->_health << " hp, " << this->_energy << " ep, " << this->_damage << " dmg" << std::endl;
+}

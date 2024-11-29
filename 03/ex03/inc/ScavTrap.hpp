@@ -2,7 +2,7 @@
 
 #include "../inc/ClapTrap.hpp"
 
-class ScavTrap: public ClapTrap
+class ScavTrap: virtual public ClapTrap
 {
 	private:
 	// attributes
