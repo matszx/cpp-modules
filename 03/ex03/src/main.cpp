@@ -7,10 +7,10 @@ int	main(void)
 	ClapTrap 	a;
 	DiamondTrap b;
 
-
-	a.attack("DiamonTrap");
 	a.printStats();
 	b.printStats();
+
+	a.attack("DiamonTrap");
 	b.takeDamage(0);
 	b.attack("ClapTrap");
 	a.takeDamage(30);

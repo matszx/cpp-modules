@@ -1,6 +1,6 @@
 NAME 			=	diamondtrap
 CC 				=	c++
-CFLAGS 			=	-Wall -Wextra -Werror -std=c++98 -fsanitize=address -Wshadow
+CFLAGS 			=	-Wall -Wextra -Werror -Wshadow -std=c++98 -fsanitize=address
 
 SRC_FILES 		=	main.cpp \
 					ClapTrap.cpp \

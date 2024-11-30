@@ -21,7 +21,7 @@ class ClapTrap
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap& src);
 	// destructors
-		~ClapTrap(void);
+		virtual ~ClapTrap(void);
 	// operators overload
 		ClapTrap&	operator=(const ClapTrap& src);
 	// methods

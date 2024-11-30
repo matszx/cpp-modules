@@ -10,7 +10,7 @@ class FragTrap: virtual public ClapTrap
 		FragTrap(std::string name);
 		FragTrap(const FragTrap& src);
 	// destructors
-		~FragTrap(void);
+		virtual ~FragTrap(void);
 	// operator overload
 		FragTrap&	operator=(const FragTrap& src);
 	// methods
