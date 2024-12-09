@@ -36,6 +36,11 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& src)
 	return (*this);
 }
 
+void	ClapTrap::printStats(void)
+{
+	std::cout << this->_name << " stats: " << this->_health << " hp, " << this->_energy << " ep, " << this->_damage << " dmg" << std::endl;
+}
+
 void	ClapTrap::attack(const std::string& target)
 {
 	std::cout << this->_name;
@@ -53,8 +58,6 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	std::cout << this->_name;
 	if (this->_health <= 0)
 		std::cout << " is already destroyed and can't be attacked";
-	else if (this->_energy <= 0)
-		std::cout << " is out of energy and can't attack";
 	else
 	{
 		this->_health -= amount;
@@ -71,7 +74,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	if (this->_health <= 0)
 		std::cout << " is beyond repair";
 	else if (this->_energy <= 0)
-		std::cout << " is out of energy and can't attack";
+		std::cout << " is out of energy and can't repair";
 	else
 	{
 		this->_energy--;

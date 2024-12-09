@@ -5,13 +5,14 @@ int	main(void)
 	ClapTrap a;
 	ScavTrap b;
 
+	a.printStats();
+	b.printStats();
 	a.attack("ScavTrap");
-	b.takeDamage(20);
-	b.beRepaired(20);
+	b.takeDamage(0);
+	b.beRepaired(50);
 	b.attack("ClapTrap");
 	a.takeDamage(20);
 	b.guardGate();
-	b.attack("ScavTrap");
 
 	return (0);
 }

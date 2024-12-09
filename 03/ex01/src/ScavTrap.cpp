@@ -3,12 +3,11 @@
 ScavTrap::ScavTrap(void): ClapTrap()
 {
 	if (DEBUG)
-		std::cout << DB "ScavTrap: default constrcutor called" RESET << std::endl;
+		std::cout << DB "ScavTrap: default constructor called" RESET << std::endl;
 	this->_name = "ScavTrap";
 	this->_health = 100;
 	this->_energy = 50;
 	this->_damage = 20;
-	this->_guard = false;
 }
 
 ScavTrap::ScavTrap(std::string name): ClapTrap()
@@ -19,7 +18,6 @@ ScavTrap::ScavTrap(std::string name): ClapTrap()
 	this->_health = 100;
 	this->_energy = 50;
 	this->_damage = 20;
-	this->_guard = false;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& src): ClapTrap()
@@ -51,8 +49,6 @@ void	ScavTrap::attack(const std::string& target)
 	std::cout << this->_name;
 	if (this->_health <= 0)
 		std::cout << " is destroyed and can't do anything";
-	else if (this->_guard)
-		std::cout << " is guarding the gate";
 	else if (this->_energy <= 0)
 		std::cout << " is out of energy and can't do anything";
 	else
@@ -62,6 +58,5 @@ void	ScavTrap::attack(const std::string& target)
 
 void	ScavTrap::guardGate(void)
 {
-	this->_guard = true;
 	std::cout << this->_name << " is in gate keeper mode" << std::endl;
 }
