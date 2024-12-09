@@ -4,9 +4,6 @@
 
 class ScavTrap: public ClapTrap
 {
-	private:
-	// attributes
-		bool	_guard;
 	public:
 	// constructors
 		ScavTrap(void);
