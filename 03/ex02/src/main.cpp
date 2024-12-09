@@ -6,7 +6,6 @@ int	main(void)
 	ClapTrap a;
 	FragTrap b;
 
-
 	a.attack("FragTrap");
 	b.takeDamage(0);
 	b.attack("ClapTrap");
