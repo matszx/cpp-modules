@@ -40,7 +40,7 @@ ScavTrap&	ScavTrap::operator=(const ScavTrap& src)
 	this->_name = src._name;
 	this->_health = src._health;
 	this->_energy = src._energy;
-	this->_damage = src._damage;
+	this->_damage = src._damage; 
 	return (*this);
 }
 

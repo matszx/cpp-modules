@@ -7,6 +7,9 @@ int	main(void)
 
 	a.printStats();
 	b.printStats();
+	b.attack("a bush");
+	b.guardGate();
+	b.highFivesGuys();
 	b.whoAmI();
 
 	return (0);

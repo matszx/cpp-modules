@@ -5,9 +5,7 @@ DiamondTrap::DiamondTrap(void): ClapTrap(), ScavTrap(), FragTrap()
 	if (DEBUG)
 		std::cout << DB "DiamondTrap: default constructor called" RESET << std::endl;
 	ClapTrap::_name = (this->_name = "DiamondTrap") + "_clap_name";
-	this->_health = FragTrap::_health;
-	this->_energy = ScavTrap::_energy;
-	this->_damage = FragTrap::_damage;
+	this->_energy = 50;
 }
 
 DiamondTrap::DiamondTrap(std::string name): ClapTrap(), ScavTrap(), FragTrap()
@@ -16,9 +14,7 @@ DiamondTrap::DiamondTrap(std::string name): ClapTrap(), ScavTrap(), FragTrap()
 		std::cout << DB "DiamondTrap: name constructor called" RESET << std::endl;
 	this->_name = name;
 	ClapTrap::_name = (this->_name = name) + "_clap_name";
-	this->_health = FragTrap::_health;
-	this->_energy = ScavTrap::_energy;
-	this->_damage = FragTrap::_damage;
+	this->_energy = 50;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& src): ClapTrap(), ScavTrap(), FragTrap()
