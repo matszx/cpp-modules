@@ -3,7 +3,11 @@
 int	main(void)
 {
 	ClapTrap a;
+	ScavTrap tmp1("Alfred");
+	ScavTrap tmp2(tmp1);
 	ScavTrap b;
+
+	b = tmp2;
 
 	a.printStats();
 	b.printStats();
