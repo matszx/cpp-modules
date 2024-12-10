@@ -1,6 +1,6 @@
 NAME 			=	fragtrap
 CC 				=	c++
-CFLAGS 			=	-Wall -Wextra -Werror -std=c++98 -fsanitize=address
+CFLAGS 			=	-Wall -Wextra -Wshadow -Werror -std=c++98 -pedantic-errors -fsanitize=address
 
 SRC_FILES 		=	main.cpp \
 					ClapTrap.cpp \
