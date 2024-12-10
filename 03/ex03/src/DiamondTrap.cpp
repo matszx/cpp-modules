@@ -12,7 +12,6 @@ DiamondTrap::DiamondTrap(std::string name): ClapTrap(), ScavTrap(), FragTrap()
 {
 	if (DEBUG)
 		std::cout << DB "DiamondTrap: name constructor called" RESET << std::endl;
-	this->_name = name;
 	ClapTrap::_name = (this->_name = name) + "_clap_name";
 	this->_energy = 50;
 }
@@ -34,6 +33,7 @@ DiamondTrap&	DiamondTrap::operator=(const DiamondTrap& src)
 {
 	if (DEBUG)
 		std::cout << DB "DiamondTrap: assignment operator called" RESET << std::endl;
+	ClapTrap::_name = src.ClapTrap::_name;
 	this->_name = src._name;
 	this->_health = src._health;
 	this->_energy = src._energy;

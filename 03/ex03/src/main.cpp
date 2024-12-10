@@ -2,14 +2,17 @@
 
 int	main(void)
 {
-	ClapTrap	a;
-	DiamondTrap	b;
+	DiamondTrap	a;
+	DiamondTrap tmp("Alfred");
+	DiamondTrap b;
+
+	b = tmp;
 
 	a.printStats();
-	b.printStats();
-	b.attack("a bush");
-	b.guardGate();
-	b.highFivesGuys();
+	a.attack("a bush");
+	a.highFivesGuys();
+	a.guardGate();
+	a.whoAmI();
 	b.whoAmI();
 
 	return (0);
