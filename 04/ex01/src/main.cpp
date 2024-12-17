@@ -1,35 +1,25 @@
 #include "../inc/Cat.hpp"
 #include "../inc/Dog.hpp"
-#include "../inc/WrongCat.hpp"
 
 int main()
 {
 	{
-		const Animal* animal = new Animal();
-		const Animal* cat = new Cat();
-		const Animal* dog = new Dog();
-		
-		std::cout << cat->getType() << std::endl;
-		std::cout << dog->getType() << std::endl;
-		cat->makeSound();
-		dog->makeSound();
-		animal->makeSound();
+		Dog *dog1 = new Dog();
+		Dog *dog2 = new Dog(*dog1);
 
-		delete animal;
-		delete cat;
-		delete dog;
+		delete dog1;
+		// dog2->makeSound();
+		delete dog2;
 	}
-	std::cout << std::endl;
-	{
-		const WrongAnimal* animal = new WrongAnimal();
-		const WrongAnimal* cat = new WrongCat();
-		
-		std::cout << cat->getType() << std::endl;
-		cat->makeSound();
-		animal->makeSound();
+	/* {
+		Animal*	array[100];
 
-		delete animal;
-		delete cat;
-	}
+		for (int i = 0; i < 50; i++)
+			array[i] = new Dog();
+		for (int i = 50; i < 100; i++)
+			array[i] = new Cat();
+		for (int i = 0; i < 100; i++)
+			delete array[i];
+	} */
 	return 0;
 }

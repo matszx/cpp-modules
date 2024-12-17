@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include "../inc/Brain.hpp"
 
 #define DEBUG	true
 #define DB		"\x1b[2;38;5;102m"

@@ -5,6 +5,7 @@ Cat::Cat(): Animal()
 	if (DEBUG)
 		std::cout << DB "Cat: default constructor called" RESET << std::endl;
 	_type = "Cat";
+	_brain = new Brain;
 }
 
 Cat::Cat(const Cat& src): Animal()
@@ -18,6 +19,7 @@ Cat::~Cat()
 {
 	if (DEBUG)
 		std::cout << DB "Cat: default destructor called" RESET << std::endl;
+	delete _brain;
 }
 
 Cat&	Cat::operator=(const Cat& src)
@@ -25,6 +27,7 @@ Cat&	Cat::operator=(const Cat& src)
 	if (DEBUG)
 		std::cout << DB "Cat: assignment operator called" RESET << std::endl;
 	_type = src._type;
+	*_brain = *src._brain;
 	return *this;
 }
 
