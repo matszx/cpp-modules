@@ -3,8 +3,8 @@
 #include <iostream>
 
 #define DEBUG	true
-#define DB		"\x1b[2;38;5;102m"
-#define RESET	"\x1b[0m"
+#define D		"\x1b[2;38;5;102m"
+#define R	"\x1b[0m"
 
 class Animal
 {
