@@ -10,7 +10,6 @@ class WrongAnimal
 {
 	protected:
 		std::string	_type;
-
 	public:
 		WrongAnimal();
 		WrongAnimal(const WrongAnimal& src);
