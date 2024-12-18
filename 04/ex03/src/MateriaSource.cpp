@@ -1,0 +1,47 @@
+#include "../inc/MateriaSource.hpp"
+
+MateriaSource::MateriaSource()
+{
+	for (int i; i < INV_SIZE; i++)
+		_memory[i] = NULL;
+}
+
+MateriaSource::MateriaSource(const MateriaSource& src)
+{
+	*this = src;
+}
+
+MateriaSource::~MateriaSource()
+{
+	for (int i; i < INV_SIZE; i++)
+		delete _memory[i];
+}
+
+MateriaSource&	MateriaSource::operator=(const MateriaSource& src)
+{
+	for (int i = 0; i < INV_SIZE; i++)
+		delete _memory[i];
+	for (int i = 0; i < INV_SIZE; i++)
+		*_memory[i] = *(src._memory[i]);
+	return *this;
+}
+
+void		MateriaSource::learnMateria(AMateria* m)
+{
+	int	i = 0;
+
+	while (_memory[i] && i < INV_SIZE)
+		i++;
+	if (i < INV_SIZE)
+		_memory[i] = m;
+}
+
+AMateria*	MateriaSource::createMateria(std::string const& type)
+{
+	for (int i = 0; i < INV_SIZE; i++)
+	{
+		if (_memory[i]->getType() == type)
+			return _memory[i];
+	}
+	return NULL;
+}

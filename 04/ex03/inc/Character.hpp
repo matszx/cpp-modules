@@ -1,16 +1,14 @@
 #pragma once
 
-#include "../inc/ICharacter.hpp"
+#include "ICharacter.hpp"
 
 #define INV_SIZE	4
-/* #define TRASH_SIZE	1024 */
 
 class Character: public ICharacter
 {
 	private:
 		std::string	_name;
 		AMateria*	_inv[INV_SIZE];
-		/* AMateria*	_trash[TRASH_SIZE]; */
 	public:
 		Character();
 		Character(std::string name);

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include "ICharacter.hpp"
+#include "Character.hpp"
 
 class AMateria
 {
@@ -9,7 +9,7 @@ class AMateria
 		std::string	_type;
 	public:
 		AMateria(std::string const& type);
-		// todo
+		virtual ~AMateria();
 		std::string const&	getType() const;
 		virtual AMateria*	clone() const = 0;
 		virtual void		use(ICharacter& target);

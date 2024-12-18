@@ -42,12 +42,14 @@ std::string const&	Character::getName() const
 
 void	Character::equip(AMateria* m)
 {
-	int	i = 0;
+	int	i = -1;
 
-	while (_inv[i] && i < INV_SIZE)
-		i++;
-	if (i < INV_SIZE)
-		_inv[i] = m;
+	while (_inv[++i])
+	{
+		if (_inv[i] == m || i >= INV_SIZE)
+			return ;
+	}
+	_inv[i] = m;
 }
 
 void	Character::unequip(int idx)
