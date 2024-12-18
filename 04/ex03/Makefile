@@ -3,10 +3,11 @@ CC 				=	c++
 CFLAGS 			=	-Wall -Wextra -Wshadow -Werror -std=c++98 -pedantic-errors -fsanitize=address
 
 SRC_FILES 		=	main.cpp \
-					Character.cpp \
-					MateriaSource.cpp \
+					AMateria.cpp \
 					Ice.cpp \
 					Cure.cpp \
+					Character.cpp \
+					MateriaSource.cpp
 
 SRC_DIR			=	src/
 SRC				=	$(addprefix $(SRC_DIR), $(SRC_FILES))

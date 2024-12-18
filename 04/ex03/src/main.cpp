@@ -1,7 +1,7 @@
-/* #include "../inc/Character.hpp"
-#include "../inc/MateriaSource.hpp"
+#include "../inc/Character.hpp"
 #include "../inc/Ice.hpp"
 #include "../inc/Cure.hpp"
+#include "../inc/MateriaSource.hpp"
 
 int main()
 {
@@ -25,4 +25,4 @@ int main()
 	delete src;
 
 	return 0;
-} */
+}
