@@ -2,13 +2,13 @@
 
 #include "ICharacter.hpp"
 
-#define INV_SIZE	4
+#define INV_MAX	4
 
 class Character: public ICharacter
 {
 	private:
 		std::string	_name;
-		AMateria*	_inv[INV_SIZE];
+		AMateria*	_inv[INV_MAX];
 	public:
 		Character();
 		Character(std::string name);

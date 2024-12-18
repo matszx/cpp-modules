@@ -3,14 +3,14 @@
 Character::Character()
 {
 	_name = "nameless";
-	for (int i = 0; i < INV_SIZE; i++)
+	for (int i = 0; i < INV_MAX; i++)
 		_inv[i] = NULL;
 }
 
 Character::Character(std::string name)
 {
 	_name = name;
-	for (int i = 0; i < INV_SIZE; i++)
+	for (int i = 0; i < INV_MAX; i++)
 		_inv[i] = NULL;
 }
 
@@ -21,16 +21,16 @@ Character::Character(const Character& src)
 
 Character::~Character()
 {
-	for (int i = 0; i < INV_SIZE; i++)
+	for (int i = 0; i < INV_MAX; i++)
 		delete _inv[i];
 }
 
 Character&	Character::operator=(const Character& src)
 {
 	_name = src._name;
-	for (int i = 0; i < INV_SIZE; i++)
+	for (int i = 0; i < INV_MAX; i++)
 		delete _inv[i];
-	for (int i = 0; i < INV_SIZE; i++)
+	for (int i = 0; i < INV_MAX; i++)
 		*_inv[i] = *(src._inv[i]);
 	return *this;
 }
@@ -46,7 +46,7 @@ void	Character::equip(AMateria* m)
 
 	while (_inv[++i])
 	{
-		if (_inv[i] == m || i >= INV_SIZE)
+		if (_inv[i] == m || i >= INV_MAX)
 			return ;
 	}
 	_inv[i] = m;
@@ -54,12 +54,12 @@ void	Character::equip(AMateria* m)
 
 void	Character::unequip(int idx)
 {
-	if (idx >= 0 && idx <= INV_SIZE)
+	if (idx >= 0 && idx <= INV_MAX)
 		_inv[idx] = NULL;
 }
 
 void	Character::use(int idx, ICharacter& target)
 {
-	if (idx >= 0 && idx <= INV_SIZE)
+	if (idx >= 0 && idx <= INV_MAX)
 		_inv[idx]->use(target);
 }

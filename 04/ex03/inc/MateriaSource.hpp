@@ -2,12 +2,12 @@
 
 #include "IMateriaSource.hpp"
 
-#define	INV_SIZE	4
+#define	INV_MAX	4
 
 class MateriaSource: public IMateriaSource
 {
 	private:
-		AMateria*	_memory[INV_SIZE];
+		AMateria*	_memory[INV_MAX];
 	public:
 		MateriaSource();
 		MateriaSource(const MateriaSource& src);
