@@ -11,6 +11,7 @@ Cure::~Cure() {}
 
 Cure&		Cure::operator=(const Cure& src)
 {
+	(void)src;
 	return *this;
 }
 

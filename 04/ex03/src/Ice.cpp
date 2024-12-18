@@ -11,6 +11,7 @@ Ice::~Ice() {}
 
 Ice&		Ice::operator=(const Ice& src)
 {
+	(void)src;
 	return *this;
 }
 
