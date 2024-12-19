@@ -31,7 +31,7 @@ Character&	Character::operator=(const Character& src)
 	for (int i = 0; i < INV_MAX; i++)
 		delete _inv[i];
 	for (int i = 0; i < INV_MAX; i++)
-		*_inv[i] = *(src._inv[i]);
+		_inv[i] = src._inv[i]->clone();
 	return *this;
 }
 

@@ -22,7 +22,7 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& src)
 	for (int i = 0; i < INV_MAX; i++)
 		delete _memory[i];
 	for (int i = 0; i < INV_MAX; i++)
-		*_memory[i] = *(src._memory[i]);
+		_memory[i] = src._memory[i]->clone();
 	return *this;
 }
 
@@ -30,7 +30,7 @@ void		MateriaSource::learnMateria(AMateria* m)
 {
 	int	i = 0;
 
-	while (_memory[i] && i < INV_MAX)
+	while (i < INV_MAX && _memory[i])
 		i++;
 	if (i < INV_MAX)
 		_memory[i] = m;
@@ -40,8 +40,8 @@ AMateria*	MateriaSource::createMateria(std::string const& type)
 {
 	for (int i = 0; i < INV_MAX; i++)
 	{
-		if (_memory[i]->getType() == type)
-			return _memory[i];
+		if (_memory[i] != NULL && _memory[i]->getType() == type)
+			return _memory[i]->clone();
 	}
 	return NULL;
 }
