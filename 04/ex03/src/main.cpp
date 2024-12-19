@@ -12,7 +12,9 @@ int main()
 	ICharacter*	me = new Character("me");
 
 	AMateria*	tmp;
+	std::cout << "hello" << std::endl;
 	tmp = src->createMateria("ice");
+	std::cout << "hello" << std::endl;
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);

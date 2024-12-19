@@ -2,7 +2,7 @@
 
 MateriaSource::MateriaSource()
 {
-	for (int i; i < INV_MAX; i++)
+	for (int i = 0; i < INV_MAX; i++)
 		_memory[i] = NULL;
 }
 
@@ -13,7 +13,7 @@ MateriaSource::MateriaSource(const MateriaSource& src)
 
 MateriaSource::~MateriaSource()
 {
-	for (int i; i < INV_MAX; i++)
+	for (int i = 0; i < INV_MAX; i++)
 		delete _memory[i];
 }
 
@@ -40,7 +40,7 @@ AMateria*	MateriaSource::createMateria(std::string const& type)
 {
 	for (int i = 0; i < INV_MAX; i++)
 	{
-		if (_memory[i] != NULL && _memory[i]->getType() == type)
+		if (_memory[i] && _memory[i]->getType() == type)
 			return _memory[i]->clone();
 	}
 	return NULL;

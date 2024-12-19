@@ -2,7 +2,7 @@
 
 Character::Character()
 {
-	_name = "nameless";
+	_name = "Null";
 	for (int i = 0; i < INV_MAX; i++)
 		_inv[i] = NULL;
 }
