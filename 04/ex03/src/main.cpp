@@ -3,6 +3,9 @@
 #include "../inc/Cure.hpp"
 #include "../inc/MateriaSource.hpp"
 
+#define FORMAT	"\x1b[1;4m"
+#define RESET	"\x1b[0m"
+
 int main()
 {
 	IMateriaSource*	src = new MateriaSource;

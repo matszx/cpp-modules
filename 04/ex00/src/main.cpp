@@ -5,9 +5,9 @@
 int main()
 {
 	{
-		const Animal* animal = new Animal();
-		const Animal* cat = new Cat();
-		const Animal* dog = new Dog();
+		const Animal* animal = new Animal;
+		const Animal* cat = new Cat;
+		const Animal* dog = new Dog;
 		
 		std::cout << cat->getType() << std::endl;
 		std::cout << dog->getType() << std::endl;
@@ -21,8 +21,8 @@ int main()
 	}
 	std::cout << std::endl;
 	{
-		const WrongAnimal* animal = new WrongAnimal();
-		const WrongAnimal* cat = new WrongCat();
+		const WrongAnimal* animal = new WrongAnimal;
+		const WrongAnimal* cat = new WrongCat;
 		
 		std::cout << cat->getType() << std::endl;
 		cat->makeSound();

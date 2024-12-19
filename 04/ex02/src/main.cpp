@@ -2,9 +2,10 @@
 #include "../inc/Dog.hpp"
 
 int main()
-{
-	/* Animal animal; */
+{	
 	Dog dog;
 	Cat cat;
+	/* Animal animal; */
+
 	return 0;
 }
