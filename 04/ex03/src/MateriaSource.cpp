@@ -28,12 +28,19 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& src)
 
 void		MateriaSource::learnMateria(AMateria* m)
 {
-	int	i = 0;
-
-	while (i < INV_MAX && _memory[i])
-		i++;
-	if (i < INV_MAX)
-		_memory[i] = m;
+	for (int i = 0; i < INV_MAX; i++)
+	{
+		if (_memory[i] == m)
+			return ;
+	}
+	for (int i = 0; i < INV_MAX; i++)
+	{
+		if (!_memory[i])
+		{
+			_memory[i] = m;
+			return ;
+		}
+	}
 }
 
 AMateria*	MateriaSource::createMateria(std::string const& type)

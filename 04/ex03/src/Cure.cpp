@@ -1,8 +1,8 @@
 #include "../inc/Cure.hpp"
 
-Cure::Cure(): AMateria("Cure") {}
+Cure::Cure(): AMateria("cure") {}
 
-Cure::Cure(const Cure& src): AMateria("Cure")
+Cure::Cure(const Cure& src): AMateria("cure")
 {
 	*this = src;
 }
