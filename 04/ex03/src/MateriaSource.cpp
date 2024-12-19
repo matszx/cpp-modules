@@ -20,9 +20,10 @@ MateriaSource::~MateriaSource()
 MateriaSource&	MateriaSource::operator=(const MateriaSource& src)
 {
 	for (int i = 0; i < INV_MAX; i++)
+	{
 		delete _memory[i];
-	for (int i = 0; i < INV_MAX; i++)
 		_memory[i] = src._memory[i]->clone();
+	}
 	return *this;
 }
 
