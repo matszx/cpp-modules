@@ -39,13 +39,13 @@ int main()
 		src->learnMateria(new Ice);
 		AMateria* ice = src->createMateria("ice");
 
-		Character bob = Character();
+		Character bob = Character("bob");
 		Character copy = Character(bob);
 
 		bob.equip(ice);
 		bob.use(0, copy);
 		copy.use(0, bob);
-
+		
 		delete src;
 	}
 	std::cout << std::endl;
