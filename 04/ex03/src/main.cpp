@@ -8,7 +8,7 @@
 
 int main()
 {
-	std::cout << FORMAT "SUBJECT TEST" RESET << std::endl;
+	std::cout << FORMAT "Subject test\n" RESET << std::endl;
 	{
 		IMateriaSource* src = new MateriaSource;
 		src->learnMateria(new Ice);
@@ -33,14 +33,22 @@ int main()
 	}
 	std::cout << std::endl;
 
-	std::cout << FORMAT "DEEP COPY TEST" RESET << std::endl;
+	std::cout << FORMAT "Copy test\n" RESET << std::endl;
 	{
-		Character *tmp = new Character();
-		Character *copy = new Character(*tmp);
+		IMateriaSource* src = new MateriaSource;
+		src->learnMateria(new Ice);
+		AMateria* ice = src->createMateria("ice");
 
-		delete copy;
-		delete tmp;
+		Character bob = Character();
+		Character copy = Character(bob);
+
+		bob.equip(ice);
+		bob.use(0, copy);
+		copy.use(0, bob);
+
+		delete src;
 	}
+	std::cout << std::endl;
 
 	return 0;
 }
