@@ -22,7 +22,10 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& src)
 	for (int i = 0; i < INV_MAX; i++)
 	{
 		delete _memory[i];
-		_memory[i] = src._memory[i]->clone();
+		if (src._memory[i])
+			_memory[i] = src._memory[i]->clone();
+		else
+			_memory[i] = NULL;
 	}
 	return *this;
 }
