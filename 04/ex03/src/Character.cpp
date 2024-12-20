@@ -16,23 +16,36 @@ Character::Character(std::string name)
 
 Character::Character(const Character& src)
 {
-	*this = src;
+	_name = src._name;
+	std::cout << "there"<< std::endl;
+	for (int i = 0; i < INV_MAX; i++)
+	{
+		/* if (_inv[i])
+			delete _inv[i]; */
+		if (src._inv[i])
+			_inv[i] = (src._inv[i])->clone();
+	}
+	std::cout << "there"<< std::endl;
 }
 
 Character::~Character()
 {
-	for (int i = 0; i < INV_MAX; i++)
-		delete _inv[i];
+	/* for (int i = 0; i < INV_MAX; i++)
+		delete _inv[i]; */
 }
 
 Character&	Character::operator=(const Character& src)
 {
 	_name = src._name;
+	std::cout << "hello"<< std::endl;
 	for (int i = 0; i < INV_MAX; i++)
 	{
-		delete _inv[i];
-		_inv[i] = src._inv[i]->clone();
+		/* if (_inv[i])
+			delete _inv[i]; */
+		if (src._inv[i])
+			_inv[i] = (src._inv[i])->clone();
 	}
+	std::cout << "hello"<< std::endl;
 	return *this;
 }
 

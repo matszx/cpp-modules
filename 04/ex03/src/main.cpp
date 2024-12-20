@@ -31,22 +31,13 @@ int main()
 		delete me;
 		delete src;
 	}
-	/* std::cout << std::endl;
+	std::cout << std::endl;
 
 	std::cout << FORMAT "DEEP COPY TEST" RESET << std::endl;
 	{
-		IMateriaSource*	src = new MateriaSource;
-		src->learnMateria(new Ice);
-		AMateria* ice = src->createMateria("ice");
-
-		Character* bob = new Character("bob");
-		Character* copy = new Character(*bob);
-
-		copy->equip(ice);
-		copy->use(0, *bob);
-
-		delete src;
-	} */
+		Character tmp = Character();
+		Character copy = Character(tmp);
+	}
 
 	return 0;
 }
