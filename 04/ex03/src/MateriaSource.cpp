@@ -54,5 +54,6 @@ AMateria*	MateriaSource::createMateria(std::string const& type)
 		if (_memory[i] && _memory[i]->getType() == type)
 			return _memory[i]->clone();
 	}
+	std::cout << "Materia not learnt yet" << std::endl;
 	return NULL;
 }
