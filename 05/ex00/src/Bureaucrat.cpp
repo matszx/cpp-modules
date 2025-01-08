@@ -39,8 +39,6 @@ void		Bureaucrat::increaseGrade()
 	if (_grade <= 1)
 		throw Bureaucrat::GradeTooHighException();
 	_grade--;
-	if (_grade == 1)
-		_name = "Fabieng";
 }
 
 void		Bureaucrat::decreaseGrade()
@@ -48,8 +46,6 @@ void		Bureaucrat::decreaseGrade()
 	if (_grade >= GRADE_MIN)
 		throw Bureaucrat::GradeTooLowException();
 	_grade++;
-	if (_name == "Fabieng")
-		_name = "Corenting";
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
