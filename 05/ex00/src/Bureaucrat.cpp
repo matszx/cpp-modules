@@ -1,8 +1,14 @@
 #include "../inc/Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(): _name("Fabieng"), _grade(GRADE_MIN) {}
+Bureaucrat::Bureaucrat(): _name("Corenting"), _grade(GRADE_MIN) {}
 
-Bureaucrat::Bureaucrat(int grade): _name("Fabieng"), _grade(grade) {}
+Bureaucrat::Bureaucrat(int grade): _name((grade == 1) ? "Fabieng" : "Corenting"), _grade(grade)
+{
+	if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+}
 
 Bureaucrat::Bureaucrat(const Bureaucrat& src)
 {
@@ -33,6 +39,8 @@ void		Bureaucrat::increaseGrade()
 	if (_grade <= 1)
 		throw Bureaucrat::GradeTooHighException();
 	_grade--;
+	if (_grade == 1)
+		_name = "Fabieng";
 }
 
 void		Bureaucrat::decreaseGrade()
@@ -40,6 +48,18 @@ void		Bureaucrat::decreaseGrade()
 	if (_grade >= GRADE_MIN)
 		throw Bureaucrat::GradeTooLowException();
 	_grade++;
+	if (_name == "Fabieng")
+		_name = "Corenting";
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "GradeTooHighException";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "GradeTooLowException";
 }
 
 std::ostream&	operator<<(std::ostream &out, Bureaucrat& b)

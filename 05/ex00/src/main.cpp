@@ -2,17 +2,27 @@
 
 int	main()
 {
-	Bureaucrat*	intern = new Bureaucrat();
-
-	std::cout << *intern << std::endl;
-	try {
-		intern->increaseGrade();
+	{
+		try {Bureaucrat(0);}
+		catch (const std::exception& e) {std::cout << e.what() << std::endl;}
+		try {Bureaucrat(151);}
+		catch (const std::exception& e) {std::cout << e.what() << std::endl;}
 	}
-	catch (std::exception& e) {
-		std::cout << "Hello there" << std::endl;
+	std::cout << std::endl;
+	{
+		Bureaucrat b = Bureaucrat(1);
+		std::cout << b << std::endl;
+
+		try {b.increaseGrade();}
+		catch (const std::exception& e) {std::cout << e.what() << std::endl;}
 	}
+	std::cout << std::endl;
+	{
+		Bureaucrat b = Bureaucrat();
+		std::cout << b << std::endl;
 
-	delete intern;
-
+		try {b.decreaseGrade();}
+		catch (const std::exception& e) {std::cout << e.what() << std::endl;}
+	}
 	return 0;
 }
