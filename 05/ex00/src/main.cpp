@@ -10,17 +10,23 @@ int	main()
 	}
 	std::cout << std::endl;
 	{
-		Bureaucrat b = Bureaucrat(1);
+		Bureaucrat b = Bureaucrat(2);
 		std::cout << b << std::endl;
 
+		try {b.increaseGrade();}
+		catch (const std::exception& e) {std::cout << e.what() << std::endl;}
+		std::cout << b << std::endl;
 		try {b.increaseGrade();}
 		catch (const std::exception& e) {std::cout << e.what() << std::endl;}
 	}
 	std::cout << std::endl;
 	{
-		Bureaucrat b = Bureaucrat();
+		Bureaucrat b = Bureaucrat(149);
 		std::cout << b << std::endl;
 
+		try {b.decreaseGrade();}
+		catch (const std::exception& e) {std::cout << e.what() << std::endl;}
+		std::cout << b << std::endl;
 		try {b.decreaseGrade();}
 		catch (const std::exception& e) {std::cout << e.what() << std::endl;}
 	}

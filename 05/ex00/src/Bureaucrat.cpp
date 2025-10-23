@@ -1,8 +1,8 @@
 #include "../inc/Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(): _name("Corenting"), _grade(GRADE_MIN) {}
+Bureaucrat::Bureaucrat(): _name("Jean-Michel Office"), _grade(GRADE_MIN) {}
 
-Bureaucrat::Bureaucrat(int grade): _name((grade == 1) ? "Fabieng" : "Corenting"), _grade(grade)
+Bureaucrat::Bureaucrat(int grade): _name("Jean-Michel Office"), _grade(grade)
 {
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
@@ -19,7 +19,6 @@ Bureaucrat::~Bureaucrat() {}
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& src)
 {
-	_name = src._name;
 	_grade = src._grade;
 	return *this;
 }
