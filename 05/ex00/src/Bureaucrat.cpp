@@ -2,7 +2,7 @@
 
 Bureaucrat::Bureaucrat(): _name("Jean-Michel Office"), _grade(GRADE_MIN) {}
 
-Bureaucrat::Bureaucrat(int grade): _name("Jean-Michel Office"), _grade(grade)
+Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
 {
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
