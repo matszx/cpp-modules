@@ -7,10 +7,9 @@ int	main()
 	Form f = Form("XYZ", 60, 60);
 
 	std::cout << b1 << std::endl;
-	std::cout << b2 << std::endl;
-	std::cout << f << std::endl;
+	std::cout << b2 << std::endl << std::endl;
+	std::cout << f << std::endl << std::endl;
 
-	b1.signForm(f);
 	b2.signForm(f);
 	b1.signForm(f);
 

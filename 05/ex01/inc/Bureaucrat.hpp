@@ -1,10 +1,11 @@
 #pragma once
 
 #include <iostream>
-#include <exception>
 #include "Form.hpp"
 
 #define	GRADE_MIN	150
+
+class Form;
 
 class Bureaucrat
 {
