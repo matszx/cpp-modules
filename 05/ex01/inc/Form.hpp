@@ -19,7 +19,7 @@ class Form
 		bool		isSigned();
 		int			getSignReq();
 		int			getExecReq();
-		int			beSigned(Bureaucrat& b);
+		void		beSigned(Bureaucrat& b);
 	
 	class GradeTooHighException: public std::exception
 	{

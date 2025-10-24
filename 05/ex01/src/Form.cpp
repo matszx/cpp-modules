@@ -43,11 +43,10 @@ bool		Form::isSigned()
 	return _signed;
 }
 
-int			Form::beSigned(Bureaucrat& b)
+void		Form::beSigned(Bureaucrat& b)
 {
-	if (b.getGrade() <= _signReq)
-		return (1);
-	return (0);
+	if (b.getGrade() > _signReq)
+		throw Bureaucrat::GradeTooLowException();
 }
 
 const char* Form::GradeTooHighException::what() const throw()

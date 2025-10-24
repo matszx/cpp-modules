@@ -49,9 +49,13 @@ void		Bureaucrat::decreaseGrade()
 
 void		Bureaucrat::signForm(Form& form)
 {
-	if (!form.beSigned(*this))
+	try {form.beSigned(*this);}
+	catch (const std::exception& e)
+	{
 		std::cout << this << "couldn't sign" << form << "because his grade is too low" << std::endl;
-	else if (form.isSigned())
+		return;
+	}
+	if (form.isSigned())
 		std::cout << this << "couldn't sign" << form << "because it's already signed" << std::endl;
 	else
 		std::cout << this << "signed" << form << std::endl;
