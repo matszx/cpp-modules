@@ -1,6 +1,6 @@
 #include "../inc/ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(): _target("home") {}
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm::AForm("ShrubberyCreationForm", 145, 137), _target("null") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target): _target(target) {}
 
@@ -10,3 +10,8 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src)
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
+
+void	ShrubberyCreationForm::beExecuted()
+{
+	std::cout << "hello shrub" << std::endl;
+}

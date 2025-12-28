@@ -1,6 +1,6 @@
 #include "../inc/RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(): _target("home") {}
+RobotomyRequestForm::RobotomyRequestForm(): AForm::AForm("RobotomyRequestForm", 72, 45), _target("null") {}
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target): _target(target) {}
 
@@ -10,3 +10,8 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src)
 }
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
+
+void	RobotomyRequestForm::beExecuted()
+{
+	std::cout << "hello robo" << std::endl;
+}
