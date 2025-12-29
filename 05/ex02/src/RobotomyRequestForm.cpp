@@ -1,4 +1,5 @@
 #include "../inc/RobotomyRequestForm.hpp"
+#include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm(): AForm::AForm("RobotomyRequestForm", 72, 45), _target("null") {}
 
@@ -19,5 +20,8 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& s
 
 void	RobotomyRequestForm::beExecuted() const
 {
-	std::cout << "hello robo" << std::endl;
+	if (rand() % 2)
+		std::cout << "*BRRRRRRRRRR BRRRRRRRRRR BRRRR* " << _target << " has been robotomized" << std::endl;
+	else
+		std::cout << "The robotomy failed" << std::endl;
 }

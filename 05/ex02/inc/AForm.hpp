@@ -22,7 +22,7 @@ class AForm
 		int				getSignReq();
 		int				getExecReq();
 		void			beSigned(Bureaucrat& b);
-		void			execute(Bureaucrat const & executor) const;
+		void			execute(const Bureaucrat& executor) const;
 		virtual void	beExecuted() const = 0;
 	
 	class GradeTooHighException: public std::exception
