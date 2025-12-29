@@ -27,6 +27,7 @@ void	ShrubberyCreationForm::beExecuted() const
 		std::cout << "Can't open file" << std::endl;
 		return ;
 	}
-	outfile << TREES << std::endl;
+	outfile << TREE << std::endl;
 	outfile.close();
+	std::cout << "A tree was planted" << std::endl; 
 }

@@ -3,7 +3,7 @@
 #include <fstream>
 #include "AForm.hpp"
 
-#define TREES	"                                                         .\n\
+#define TREE	"                                                         .\n\
                                               .         ;\n\
                  .              .              ;%     ;;\n\
                    ,           ,                :;%  %;\n\
