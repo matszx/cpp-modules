@@ -4,7 +4,10 @@ CFLAGS 			=	-Wall -Wextra -Werror -std=c++98 -pedantic-errors -fsanitize=address
 
 SRC_FILES 		=	main.cpp \
 					Bureaucrat.cpp \
-					AForm.cpp
+					AForm.cpp \
+					ShrubberyCreationForm.cpp \
+					RobotomyRequestForm.cpp \
+					PresidentialPardonForm.cpp
 
 SRC_DIR			=	src/
 SRC				=	$(addprefix $(SRC_DIR), $(SRC_FILES))

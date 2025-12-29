@@ -15,7 +15,7 @@ class AForm
 		AForm();
 		AForm(std::string const name, int signReq, int execReq);
 		AForm(const AForm& src);
-		~AForm();
+		virtual ~AForm();
 		AForm&	operator=(const AForm& src);
 		std::string		getName();
 		bool			isSigned();
