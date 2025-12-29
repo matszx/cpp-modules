@@ -2,9 +2,9 @@
 
 int	main()
 {
-	Bureaucrat b1 = Bureaucrat("Fabieng", 20);
-	Bureaucrat b2 = Bureaucrat("Corenting", 150);
-	Form f = Form("XYZ", 60, 60);
+	Bureaucrat b1("Fabieng", 20);
+	Bureaucrat b2("Corenting", 150);
+	Form f("XYZ", 60, 60);
 
 	std::cout << b1 << std::endl;
 	std::cout << b2 << std::endl << std::endl;

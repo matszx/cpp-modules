@@ -10,7 +10,7 @@ int	main()
 	}
 	std::cout << std::endl;
 	{
-		Bureaucrat b = Bureaucrat("Fabieng", 2);
+		Bureaucrat b("Fabieng", 2);
 		std::cout << b << std::endl;
 
 		try {b.increaseGrade();}
@@ -21,7 +21,7 @@ int	main()
 	}
 	std::cout << std::endl;
 	{
-		Bureaucrat b = Bureaucrat("Corenting", 149);
+		Bureaucrat b("Corenting", 149);
 		std::cout << b << std::endl;
 
 		try {b.decreaseGrade();}
