@@ -3,14 +3,14 @@
 int	main()
 {
 	{
-		try {Bureaucrat("Fabieng", 0);}
+		try {Bureaucrat("Manager", 0);}
 		catch (const std::exception& e) {std::cout << e.what() << std::endl;}
-		try {Bureaucrat("Corenting", 151);}
+		try {Bureaucrat("Intern", 151);}
 		catch (const std::exception& e) {std::cout << e.what() << std::endl;}
 	}
 	std::cout << std::endl;
 	{
-		Bureaucrat b("Fabieng", 2);
+		Bureaucrat b("Manager", 2);
 		std::cout << b << std::endl;
 
 		try {b.increaseGrade();}
@@ -21,7 +21,7 @@ int	main()
 	}
 	std::cout << std::endl;
 	{
-		Bureaucrat b("Corenting", 149);
+		Bureaucrat b("Intern", 149);
 		std::cout << b << std::endl;
 
 		try {b.decreaseGrade();}

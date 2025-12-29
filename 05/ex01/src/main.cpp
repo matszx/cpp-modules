@@ -2,8 +2,8 @@
 
 int	main()
 {
-	Bureaucrat b1("Fabieng", 20);
-	Bureaucrat b2("Corenting", 150);
+	Bureaucrat b1("Manager", 20);
+	Bureaucrat b2("Intern", 150);
 	Form f("XYZ", 60, 60);
 
 	std::cout << b1 << std::endl;
