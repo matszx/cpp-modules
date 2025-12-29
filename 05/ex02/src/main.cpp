@@ -10,23 +10,22 @@ int	main()
 	ShrubberyCreationForm shrubbery("target1");
 	RobotomyRequestForm robotomy("target2");
 	PresidentialPardonForm pardon("target3");
+	PresidentialPardonForm test("test target");
 
+	std::cout << "--- INFO --------------------------" << std::endl;
 	std::cout << b1 << std::endl;
 	std::cout << b2 << std::endl;
+	std::cout << b3 << std::endl;
 	std::cout << shrubbery << std::endl;
 	std::cout << robotomy << std::endl;
 	std::cout << pardon << std::endl << std::endl;
 
-	try
-	{
-		shrubbery.beExecuted();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	b3.signForm(pardon);
-	b2.signForm(pardon);
+	std::cout << "--- EXCEPTIONS --------------------" << std::endl;
+	b3.signForm(test);
+	b2.executeForm(test);
+	b2.signForm(test);
+	b2.executeForm(test);
+	b1.executeForm(test);
 
 	return 0;
 }

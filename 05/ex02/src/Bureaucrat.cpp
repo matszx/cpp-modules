@@ -56,13 +56,21 @@ void		Bureaucrat::signForm(AForm& form)
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << *this << " couldn't sign " << form << " because his grade is too low" << std::endl;
+		std::cout << *this << " couldn't sign " << form << " because " << e.what() << std::endl;
 		return;
 	}
 }
 
 void		Bureaucrat::executeForm(const AForm& form) const
 {
+	try
+	{
+		form.execute(const_cast <Bureaucrat&> (*this));
+	}
+	catch (std::exception &e)
+	{
+		std::cout << (const_cast <Bureaucrat&> (*this)) << " couldn't execute " << (const_cast <AForm&> (form)) << " because " << e.what() << std::endl;
+	}
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()

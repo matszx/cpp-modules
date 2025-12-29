@@ -20,6 +20,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& s
 
 void	RobotomyRequestForm::beExecuted() const
 {
+	srand(time(NULL));
 	if (rand() % 2)
 		std::cout << "*BRRRRRRRRRR BRRRRRRRRRR BRRRR* " << _target << " has been robotomized" << std::endl;
 	else

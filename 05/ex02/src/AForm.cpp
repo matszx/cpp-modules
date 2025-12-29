@@ -47,19 +47,19 @@ void		AForm::beSigned(Bureaucrat& b)
 {
 	if (b.getGrade() > _signReq)
 		throw Bureaucrat::GradeTooLowException();
+	else
+		_signed = true;
 }
 
 void		AForm::execute(Bureaucrat const & executor) const
 {
-	Bureaucrat exec = executor;
-
 	if (!_signed)
 		throw (AForm::FormNotSignedException());
-	else if (exec.getGrade() > _execReq)
+	else if ((const_cast <Bureaucrat&> (executor)).getGrade() > _execReq)
 		throw (AForm::GradeTooLowException());
 	else
 	{
-		std::cout << exec << "executed" << _name << std::endl;
+		std::cout << (const_cast <Bureaucrat&> (executor)) << " executed " << _name << std::endl;
 		beExecuted();
 	}
 }
