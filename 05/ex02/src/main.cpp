@@ -10,8 +10,8 @@ int	main()
 	std::cout << b2 << std::endl << std::endl;
 	std::cout << pardon << std::endl << std::endl;
 
-	b2.signAForm(pardon);
-	b1.signAForm(pardon);
+	b2.signForm(pardon);
+	b1.signForm(pardon);
 
 	return 0;
 }

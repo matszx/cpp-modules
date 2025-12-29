@@ -2,7 +2,7 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm(): AForm::AForm("ShrubberyCreationForm", 145, 137), _target("null") {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target): _target(target) {}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm::AForm("ShrubberyCreationForm", 145, 137), _target(target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src)
 {
@@ -11,7 +11,13 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src)
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-void	ShrubberyCreationForm::beExecuted()
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& src)
+{
+	_target = src._target;
+	return *this;
+}
+
+void	ShrubberyCreationForm::beExecuted() const
 {
 	std::cout << "hello shrub" << std::endl;
 }

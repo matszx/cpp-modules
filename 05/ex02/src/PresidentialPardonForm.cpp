@@ -2,7 +2,7 @@
 
 PresidentialPardonForm::PresidentialPardonForm(): AForm::AForm("PresidentialPardonForm", 25, 5), _target("null") {}
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target): _target(target) {}
+PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm::AForm("PresidentialPardonForm", 25, 5), _target(target) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src)
 {
@@ -10,6 +10,12 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src
 }
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
+
+PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& src)
+{
+	_target = src._target;
+	return *this;
+}
 
 void	PresidentialPardonForm::beExecuted() const
 {
