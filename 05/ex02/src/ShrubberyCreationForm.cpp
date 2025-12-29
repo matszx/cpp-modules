@@ -19,5 +19,14 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void	ShrubberyCreationForm::beExecuted() const
 {
-	std::cout << "hello shrub" << std::endl;
+	std::ofstream	outfile;
+	
+	outfile.open((_target + "_shrubbery").c_str());
+	if (outfile.fail())
+	{
+		std::cout << "Can't open file" << std::endl;
+		return ;
+	}
+	outfile << TREES << std::endl;
+	outfile.close();
 }

@@ -20,12 +20,22 @@ int	main()
 	std::cout << robotomy << std::endl;
 	std::cout << pardon << std::endl << std::endl;
 
+	std::cout << "--- EXECUTION ---------------------" << std::endl;
+	b1.signForm(shrubbery);
+	b1.executeForm(shrubbery);
+	b1.signForm(robotomy);
+	b1.executeForm(robotomy);
+	b1.signForm(pardon);
+	b1.executeForm(pardon);
+	std::cout << std::endl << std::endl;
+
 	std::cout << "--- EXCEPTIONS --------------------" << std::endl;
 	b3.signForm(test);
 	b2.executeForm(test);
 	b2.signForm(test);
 	b2.executeForm(test);
 	b1.executeForm(test);
+	std::cout << std::endl << std::endl;
 
 	return 0;
 }
