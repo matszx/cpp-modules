@@ -26,22 +26,13 @@ static int	get_type(const std::string& str)
 		return CHAR;
 	long val = strtol(c_str, &c_str_end, 10);
 	if (!*c_str_end && val > INT_MIN && val < INT_MAX)
-	{
-		std::cout << "ici int: " << *c_str_end << std::endl;
 		return INT;
-	}
 	strtod(c_str, &c_str_end);
 	if (!*c_str_end)
-	{
-		std::cout << "ici double: " << *c_str_end << std::endl;
 		return DOUBLE;
-	}
 	strtof(c_str, &c_str_end);
 	if (!*c_str_end || (*c_str_end == 'f' && !*(c_str_end + 1)))
-	{
-		std::cout << "ici float: " << *c_str_end << std::endl;
 		return FLOAT;
-	}
 	return OTHER;
 }
 
@@ -53,7 +44,7 @@ void	ScalarConverter::convert(const std::string& str)
 	double		double_val;
 	int			type = get_type(str);
 	const char*	c_str = str.c_str();
-	bool		possible = true;
+	bool		error = false;
 
 	if (type == CHAR)
 	{
@@ -85,21 +76,18 @@ void	ScalarConverter::convert(const std::string& str)
 	}
 	else
 	{
-		possible = false;
+		error = true;
 		float_val = NAN;
 		double_val = NAN;
 	}
 
-	if (possible)
-	{
-		if (isprint(char_val))
-			std::cout << "char:\t" << char_val << std::endl;
-		else
-			std::cout << "char:\tnon displayable" << std::endl;
-	}
+	if (int_val > 31 && int_val < 127)
+		std::cout << "char:\t" << char_val << std::endl;
+	else if (int_val >= 0 && int_val <= 127)
+		std::cout << "char:\tnon displayable" << std::endl;
 	else
 		std::cout << "char:\timpossible" << std::endl;
-	if (possible)
+	if (!error && double_val >= INT_MIN && double_val <= INT_MAX)
 		std::cout << "int:\t" << int_val << std::endl;
 	else
 		std::cout << "int:\timpossible" << std::endl;

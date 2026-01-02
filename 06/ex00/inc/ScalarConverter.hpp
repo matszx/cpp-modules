@@ -4,7 +4,6 @@
 #include <cstdlib>
 #include <cmath>
 #include <climits>
-#include <limits>
 
 #define OTHER	0
 #define CHAR	1
@@ -17,7 +16,7 @@ class ScalarConverter
 	public:
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter& src);
-		virtual ~ScalarConverter();
+		virtual ~ScalarConverter() = 0;
 		ScalarConverter&	operator=(const ScalarConverter& src);
 		static void	convert(const std::string& str);
 };
