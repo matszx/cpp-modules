@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <cmath>
+#include <limits>
 
 #define OTHER	0
 #define CHAR	1

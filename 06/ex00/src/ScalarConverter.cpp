@@ -15,46 +15,6 @@ ScalarConverter&	ScalarConverter::operator=(const ScalarConverter& src)
 
 ScalarConverter::~ScalarConverter() {}
 
-/* static bool	get_num_type(const std::string& str)
-{
-	const char*	p = str.c_str();
-
-	if (*p == '-' || *p == '+')
-		p++;
-	if (!*p)
-		return OTHER;
-	while (*p && *p != 'f' && *p != '.')
-	{
-		if (isdigit(*p))
-			p++;
-		else
-			return OTHER;
-	}
-	if (!*p)
-		return INT;
-	if (*p == 'f' && !*(p+1))
-		return FLOAT;
-	if (*p != '.')
-		return OTHER;
-	p++;
-	if (!*p)
-		return OTHER;
-	while (*p && *p != 'f')
-	{
-		if (isdigit(*p))
-			p++;
-		else
-			return OTHER;
-	}
-	if (*(p-1) == '.')
-		return OTHER;
-	if (!*p)
-		return DOUBLE;
-	if (*p == 'f' && !*(p+1))
-		return FLOAT;
-	return OTHER;
-} */
-
 static int	get_type(const std::string& str)
 {
 	const char*	c_str = str.c_str();
@@ -65,18 +25,13 @@ static int	get_type(const std::string& str)
 		return OTHER;
 	if (str.size() == 1 && !isdigit(str[0]))
 		return CHAR;
-	/* int	num_type = get_num_type(str);
-	if (num_type == FLOAT || str == "-inff" || str == "+inff" || str == "nanf")
-		return FLOAT;
-	if (num_type == DOUBLE || str == "-inf" || str == "+inf" || str == "nan")
-		return DOUBLE; */
-	std::strtoll(c_str, c_str_end, 10);
+	strtoll(c_str, c_str_end, 10);
 	if (!**c_str_end)
 		return INT;
-	std::strtod(c_str, c_str_end);
+	strtod(c_str, c_str_end);
 	if (!**c_str_end)
 		return DOUBLE;
-	std::strtof(c_str, c_str_end);
+	strtof(c_str, c_str_end);
 	if (!**c_str_end)
 		return FLOAT;
 	return OTHER;
@@ -90,6 +45,7 @@ void	ScalarConverter::convert(const std::string& str)
 	double		double_val;
 	int			type = get_type(str);
 	const char*	c_str = str.c_str();
+	bool		possible = true;
 
 	if (type == CHAR)
 	{
@@ -100,28 +56,45 @@ void	ScalarConverter::convert(const std::string& str)
 	}
 	else if (type == INT)
 	{
-		int_val = std::strtoll(c_str, NULL, 10);
+		int_val = strtoll(c_str, NULL, 10);
 		char_val = static_cast<int>(int_val);
 		float_val = static_cast<float>(int_val);
 		double_val = static_cast<double>(int_val);
 	}
 	else if (type == FLOAT)
 	{
-		float_val = std::strtof(c_str, NULL);
+		float_val = strtof(c_str, NULL);
 		char_val = static_cast<char>(float_val);
 		int_val = static_cast<int>(float_val);
 		double_val = static_cast<double>(float_val);
 	}
 	else if (type == DOUBLE)
 	{
-		double_val = std::strtod(c_str, NULL);
+		double_val = strtod(c_str, NULL);
 		char_val = static_cast<char>(double_val);
 		int_val = static_cast<int>(double_val);
 		float_val = static_cast<float>(double_val);
 	}
+	else
+	{
+		possible = false;
+		float_val = NAN;
+		double_val = NAN;
+	}
 
-	std::cout << "char: " << char_val << std::endl;
-	std::cout << "int: " << int_val << std::endl;
-	std::cout << "float: " << float_val << "f" << std::endl;
-	std::cout << "double: " << double_val << std::endl;
+	if (possible)
+	{
+		if (isprint(char_val))
+			std::cout << "char:\t" << char_val << std::endl;
+		else
+			std::cout << "char:\tnon displayable" << std::endl;
+	}
+	else
+		std::cout << "char:\timpossible" << std::endl;
+	if (possible)
+		std::cout << "int:\t" << int_val << std::endl;
+	else
+		std::cout << "int:\timpossible" << std::endl;
+	std::cout << "float:\t" << float_val << "f" << std::endl;
+	std::cout << "double:\t" << double_val << std::endl;
 }
