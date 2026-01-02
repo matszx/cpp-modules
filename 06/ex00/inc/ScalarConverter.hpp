@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
+#include <climits>
 #include <limits>
 
 #define OTHER	0

@@ -18,22 +18,30 @@ ScalarConverter::~ScalarConverter() {}
 static int	get_type(const std::string& str)
 {
 	const char*	c_str = str.c_str();
-	char*		useless_ptr;
-	char**		c_str_end = &useless_ptr;
+	char*		c_str_end;
 
 	if (str.empty())
 		return OTHER;
 	if (str.size() == 1 && !isdigit(str[0]))
 		return CHAR;
-	strtoll(c_str, c_str_end, 10);
-	if (!**c_str_end)
+	long val = strtol(c_str, &c_str_end, 10);
+	if (!*c_str_end && val > INT_MIN && val < INT_MAX)
+	{
+		std::cout << "ici int: " << *c_str_end << std::endl;
 		return INT;
-	strtod(c_str, c_str_end);
-	if (!**c_str_end)
+	}
+	strtod(c_str, &c_str_end);
+	if (!*c_str_end)
+	{
+		std::cout << "ici double: " << *c_str_end << std::endl;
 		return DOUBLE;
-	strtof(c_str, c_str_end);
-	if (!**c_str_end)
+	}
+	strtof(c_str, &c_str_end);
+	if (!*c_str_end || (*c_str_end == 'f' && !*(c_str_end + 1)))
+	{
+		std::cout << "ici float: " << *c_str_end << std::endl;
 		return FLOAT;
+	}
 	return OTHER;
 }
 
