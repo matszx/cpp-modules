@@ -4,13 +4,19 @@
 
 int main(void)
 {
-	char	arr[] = {'h', 'e', 'l', 'l', 'o'};
+	char		arr1[] = {'h', 'e', 'l', 'l', 'o'};
+	/* const char	arr2[] = {'c', 'o', 'n', 's', 't'}; */
 
-	iter<char>(arr, 5, print);
+	iter(arr1, 5, print);
 	std::cout << std::endl;
-	iter<char>(arr, 5, capitalize);
-	iter<char>(arr, 5, print);
+	iter(arr1, 5, capitalize);
+	iter(arr1, 5, print);
+	std::cout << std::endl << std::endl;
+	/* iter(arr2, 5, print);
 	std::cout << std::endl;
+	iter(arr2, 5, capitalize);
+	iter(arr2, 5, print);
+	std::cout << std::endl; */
 
 	return 0;
 }

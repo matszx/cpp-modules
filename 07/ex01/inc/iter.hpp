@@ -2,24 +2,21 @@
 
 #include <stdio.h>
 
-template <typename T> void iter(T* array, const size_t len, void(*f)(T& target))
+template <typename T> void iter(T* array, const size_t len, void(*foo)(T&))
 {
-	for (size_t i = 0; i < len; i++)
-		f(array[i]);
+	if (array && foo)
+	{
+		for (size_t i = 0; i < len; i++)
+			foo(array[i]);
+	}
 }
 
-template <typename T> void iter(T* array, const size_t len, void(*f)(const T& target))
-{
-	for (size_t i = 0; i < len; i++)
-		f(array[i]);
-}
-
-template <typename T> void print(const T& x)
+template <typename T> void print(T& x)
 {
 	std::cout << x;
 }
 
 template <typename T> void capitalize(T& x)
 {
-	x = toupper(x);
+	x = toupper(static_cast<char>(x));
 }
