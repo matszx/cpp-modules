@@ -1,22 +1,36 @@
-#include <iostream>
 #include "../inc/iter.hpp"
 
+/* class Awesome
+{
+	private:
+		int _n;
+	public:
+		Awesome(void) : _n(42) { return; }
+		int get(void) const { return this->_n; }
+};
+
+std::ostream& operator<<(std::ostream& o, Awesome const& rhs)
+{
+	o << rhs.get();
+	return o;
+} */
 
 int main(void)
 {
 	char		arr1[] = {'h', 'e', 'l', 'l', 'o'};
-	/* const char	arr2[] = {'c', 'o', 'n', 's', 't'}; */
+	const char	arr2[] = {'c', 'o', 'n', 's', 't'};
 
 	iter(arr1, 5, print);
 	std::cout << std::endl;
-	iter(arr1, 5, capitalize);
-	iter(arr1, 5, print);
-	std::cout << std::endl << std::endl;
-	/* iter(arr2, 5, print);
-	std::cout << std::endl;
-	iter(arr2, 5, capitalize);
 	iter(arr2, 5, print);
-	std::cout << std::endl; */
+	std::cout << std::endl;
 
+	/* int tab[] = {0, 1, 2, 3, 4};
+    Awesome tab2[5];
+
+	iter(tab, 5, print);
+	std::cout << std::endl;
+	iter(tab2, 5, print); */
+	
 	return 0;
 }
