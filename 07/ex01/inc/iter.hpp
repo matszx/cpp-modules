@@ -12,7 +12,7 @@ template <typename T> void iter(T* array, const size_t len, void(*foo)(const T&)
 	}
 }
 
-template <typename T> void print(const T& x)
+template <typename T> void printq(const T& x)
 {
 	std::cout << x;
 }
