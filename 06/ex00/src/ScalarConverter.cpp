@@ -81,9 +81,9 @@ void	ScalarConverter::convert(const std::string& str)
 		double_val = NAN;
 	}
 
-	if (int_val > 31 && int_val < 127)
+	if (!error && int_val > 31 && int_val < 127)
 		std::cout << "char:\t" << char_val << std::endl;
-	else if (int_val >= 0 && int_val <= 127)
+	else if (!error && int_val >= 0 && int_val <= 127)
 		std::cout << "char:\tnon displayable" << std::endl;
 	else
 		std::cout << "char:\timpossible" << std::endl;
