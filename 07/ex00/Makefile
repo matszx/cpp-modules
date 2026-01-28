@@ -1,6 +1,6 @@
 NAME 			=	template
 CC 				=	c++
-CFLAGS 			=	-Wall -Wextra -Werror -std=c++98 -pedantic-errors -fsanitize=address
+CFLAGS 			=	-Wall -Wextra -Werror -std=c++98 -pedantic-errors #-fsanitize=address
 
 SRC_FILES 		=	main.cpp
 
