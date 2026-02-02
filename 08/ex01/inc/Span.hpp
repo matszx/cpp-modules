@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <time.h>
@@ -18,12 +19,13 @@ class Span
 		unsigned int	shortestSpan();
 		unsigned int	longestSpan();
 		void			fillSpan();
+		void			print();
 
 	class NoSpaceLeft: public std::exception
 	{
 		const char*	what() const throw();
 	};
-	class InsufficientElements: public std::exception
+	class NotEnoughElements: public std::exception
 	{
 		const char*	what() const throw();
 	};

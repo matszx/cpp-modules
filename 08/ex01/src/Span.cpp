@@ -30,7 +30,7 @@ unsigned int	Span::shortestSpan()
 	int					diff, min;
 
 	if (_vec.size() < 2)
-		throw Span::InsufficientElements();
+		throw Span::NotEnoughElements();
 	std::sort(tmp.begin(), tmp.end());
 	min = tmp[1] - tmp[0];
 	for (unsigned int i = 1; i < tmp.size() - 1; i++)
@@ -47,16 +47,22 @@ unsigned int	Span::longestSpan()
 	std::vector<int>	tmp = _vec;
 
 	if (_vec.size() < 2)
-		throw Span::InsufficientElements();
+		throw Span::NotEnoughElements();
 	std::sort(tmp.begin(), tmp.end());
 	return tmp[tmp.size() - 1] - tmp[0];
 }
 
 void			Span::fillSpan()
 {
-	srand(time(NULL));
 	while (_vec.size() < _vec.capacity())
-		addNumber(rand());
+		addNumber(rand() % 100);
+}
+
+void			Span::print()
+{
+	for (std::vector<int>::iterator it = _vec.begin(); it != _vec.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
 }
 
 const char* Span::NoSpaceLeft::what() const throw()
@@ -64,7 +70,7 @@ const char* Span::NoSpaceLeft::what() const throw()
 	return "NoSpaceLeft";
 }
 
-const char* Span::InsufficientElements::what() const throw()
+const char* Span::NotEnoughElements::what() const throw()
 {
-	return "InsufficientElements";
+	return "NotEnoughElements";
 }
