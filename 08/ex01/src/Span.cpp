@@ -24,6 +24,12 @@ void			Span::addNumber(int num)
 	_vec.push_back(num);
 }
 
+Span	Span::operator=(const Span& src)
+{
+	_vec = src._vec;
+	return *this;
+}
+
 unsigned int	Span::shortestSpan()
 {
 	std::vector<int>	tmp = _vec;
