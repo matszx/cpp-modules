@@ -11,11 +11,7 @@ int	main()
 	std::deque<int>		deq(array, array + 5);
 	std::list<int>		lst(array, array + 5);
 
-	/* print_container(vec, "vector");
-	print_container(deq, "deque");
-	print_container(lst, "list"); */
-
-	std::cout << *easyfind(deq, 1) << std::endl;
+	std::cout << *easyfind(vec, 1) << std::endl;
 	std::cout << *easyfind(deq, 3) << std::endl;
 	std::cout << *easyfind(lst, 5) << std::endl;
 
