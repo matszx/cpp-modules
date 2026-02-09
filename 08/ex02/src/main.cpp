@@ -83,7 +83,6 @@ int main()
 		std::cout << "size: " << s.size() << "   top elem: " << s.top() << std::endl;
 		s.pop();
 		std::cout << "size: " << s.size() << "   top elem: " << s.top() << std::endl;
-		//std::cout << "other.top(): " << other.top() << std::endl;
 		std::cout << std::boolalpha;
 		std::cout << "stack empty: " << s.empty() << std::endl;
 		std::cout << "s == other : " << (s == other) << std::endl;
