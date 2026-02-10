@@ -9,7 +9,7 @@ SRC_DIR			=	src/
 SRC				=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 OBJ_DIR			=	obj/
-OBJ				=	$(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))coinExchange.hpp
+OBJ				=	$(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))
 
 $(OBJ_DIR)%.o	:	$(SRC_DIR)%.cpp
 					$(CC) $(CFLAGS) -c $< -o $@
