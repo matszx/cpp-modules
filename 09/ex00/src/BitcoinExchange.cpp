@@ -1,5 +1,17 @@
 #include "../inc/BitcoinExchange.hpp"
 
+std::string	trim(std::string str)
+{
+	std::string::iterator begin = str.begin();
+	while (begin != str.end() && isspace(*begin))
+		begin++;
+	std::string::iterator end = str.end();
+	end--;
+	while (end != begin && isspace(*end))
+		end--;
+	return std::string(begin, end + 1);
+}
+
 BitcoinExchange::BitcoinExchange() {}
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& src)
@@ -21,7 +33,7 @@ void	BitcoinExchange::initTable()
 	std::string			line, key, value;
 
 	if (!file.is_open())
-		throw DatabaseFormatError();
+		throw CantOpenDatabase();
 	std::getline(file, line);
 	if (line != "date,exchange_rate")
 		throw DatabaseFormatError();
@@ -30,6 +42,8 @@ void	BitcoinExchange::initTable()
 		std::istringstream ss(line);
 		std::getline(ss, key, ',');
 		std::getline(ss, value);
+		key = trim(key);
+		value = trim(value);
 		if (key.empty() || value.empty())
 			throw DatabaseFormatError();
 		_table[key] = atof(value.c_str());
@@ -37,9 +51,14 @@ void	BitcoinExchange::initTable()
 	file.close();
 }
 
-std::map<std::string, double>&	BitcoinExchange::getTable()
+std::map<std::string,double>&	BitcoinExchange::getTable()
 {
 	return _table;
+}
+
+const char* BitcoinExchange::CantOpenDatabase::what() const throw()
+{
+	return "CantOpenDatabase";
 }
 
 const char* BitcoinExchange::DatabaseFormatError::what() const throw()

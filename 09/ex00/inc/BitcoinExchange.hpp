@@ -9,10 +9,18 @@
 #include <cmath>
 #include <exception>
 
+struct s_entry
+{
+	int	year;
+	int	month;
+	int	date;
+	int	value;
+};
+
 class BitcoinExchange
 {
 	private:
-		std::map<std::string, double>	_table;
+		std::map<std::string,double>	_table;
 	public:
 		BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange& src);
@@ -20,8 +28,12 @@ class BitcoinExchange
 		BitcoinExchange&	operator=(const BitcoinExchange& src);
 
 		void	initTable();
-		std::map<std::string, double>&	getTable();
+		std::map<std::string,double>&	getTable();
 
+	class CantOpenDatabase: public std::exception
+	{
+		const char*	what() const throw();
+	};
 	class DatabaseFormatError: public std::exception
 	{
 		const char*	what() const throw();
