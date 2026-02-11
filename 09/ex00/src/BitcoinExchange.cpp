@@ -27,38 +27,6 @@ static std::string	trim(std::string str)
 	return std::string(begin, end + 1);
 }
 
-int	BitcoinExchange::initTable()
-{
-	std::ifstream		file("data.csv");
-	std::string			line, key, value;
-
-	if (!file.is_open())
-		return 1;
-	std::getline(file, line);
-	while (std::getline(file, line))
-	{
-		std::istringstream ss(line);
-		std::getline(ss, key, ',');
-		std::getline(ss, value);
-		key = trim(key);
-		value = trim(value);
-		if (key.empty() || value.empty())
-			return 1;
-		_table[key] = atof(value.c_str());
-	}
-	file.close();
-	return 0;
-}
-
-double	BitcoinExchange::getRate(std::string date)
-{
-	double last = _table.begin()->second;
-	std::map<std::string,double>::iterator it = _table.begin();
-	while (it != _table.end() && it->first <= date)
-		last = (it++)->second;
-	return last;
-}
-
 static int	validateDate(std::string date)
 {
 	if (date.length() != 10 \
@@ -84,7 +52,63 @@ static int	validateDate(std::string date)
 	return 0;
 }
 
-static int	validateValue(std::string value)
+static int	validateValueTable(std::string value)
+{
+	char*		endptr;
+	const char*	value_c_str = value.c_str();
+	double		val = strtod(value_c_str, &endptr);
+
+	if (endptr != value_c_str + value.length())
+		return 1;
+	if (val < 0.0)
+		return 1;
+	return 0;
+}
+
+static int	handleErrorTable(std::string key, std::string value)
+{
+	if (key.empty() || value.empty())
+		return 1;
+	else if (validateDate(key))
+		return 1;
+	else if (validateValueTable(value))
+		return 1;
+	return 0;
+}
+
+int	BitcoinExchange::initTable()
+{
+	std::ifstream		file("data.csv");
+	std::string			line, key, value;
+
+	if (!file.is_open())
+		return 1;
+	std::getline(file, line);
+	while (std::getline(file, line))
+	{
+		std::istringstream ss(line);
+		std::getline(ss, key, ',');
+		std::getline(ss, value);
+		key = trim(key);
+		value = trim(value);
+		if (handleErrorTable(key, value))
+			return 1;
+		_table[key] = atof(value.c_str());
+	}
+	file.close();
+	return 0;
+}
+
+double	BitcoinExchange::getRate(std::string date)
+{
+	double last = _table.begin()->second;
+	std::map<std::string,double>::iterator it = _table.begin();
+	while (it != _table.end() && it->first <= date)
+		last = (it++)->second;
+	return last;
+}
+
+static int	validateValueInput(std::string value)
 {
 	char*		endptr;
 	const char*	value_c_str = value.c_str();
@@ -97,13 +121,13 @@ static int	validateValue(std::string value)
 	return 0;
 }
 
-static int	handle_error(std::string key, std::string value)
+static int	handleErrorInput(std::string key, std::string value)
 {
 	if (key.empty() || value.empty())
 		std::cout << "Error: field empty" << std::endl;
 	else if (validateDate(key))
 		std::cout << "Error: date invalid" << std::endl;
-	else if (validateValue(value))
+	else if (validateValueInput(value))
 		std::cout << "Error: value invalid" << std::endl;
 	else
 		return 0;
@@ -125,7 +149,7 @@ int	BitcoinExchange::runExchange(std::string filename)
 		std::getline(ss, value);
 		key = trim(key);
 		value = trim(value);
-		if (!handle_error(key, value))
+		if (!handleErrorInput(key, value))
 			std::cout << key << " => " << value << " = " << atof(value.c_str()) * getRate(key) << std::endl;
 	}
 	file.close();
