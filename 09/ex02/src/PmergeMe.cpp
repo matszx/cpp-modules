@@ -10,9 +10,9 @@ int	checkInput(std::string input)
 	return 0;
 }
 
-std::deque<int>	input2deque(std::string input)
+std::vector<int>	input2vector(std::string input)
 {
-	std::deque<int>		c;
+	std::vector<int>		c;
 	std::istringstream	ss(input);
 	std::string			token;
 
@@ -32,16 +32,34 @@ std::list<int>	input2list(std::string input)
 	return c;
 }
 
-void	mergeInsertionSort(std::deque<int>& array)
+void	mergeInsertionSort(std::vector<int>& c)
 {
-	std::deque<int>::iterator it;
-	for (it = array.begin(); it != array.end(); it++)
+	std::vector<int>	small;
+	std::vector<int>	large;
+	
+	if (c.size() == 1)
+		return;
+	if (c.size() == 2)
 	{
-		int	last_val = *it;
-		if (last_val > *(it + 1))
+		if (c[0] > c[1])
 		{
-			*it = *(++it);
-			*it = last_val;
+			int	tmp = c[0];
+			c[0] = c[1];
+			c[1] = tmp;
 		}
+		return;
+	}
+	std::vector<int>::iterator it = c.begin();
+	if (c.size() % 2)
+		it++;
+	while (it != c.end())
+	{
+		int	tmp = *it;
+		if (tmp > *(it + 1))
+		{
+			*it = *(it + 1);
+			*(it + 1) = tmp;
+		}
+		it += 2;
 	}
 }

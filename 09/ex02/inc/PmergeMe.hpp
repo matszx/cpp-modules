@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <sstream>
-#include <deque>
+#include <vector>
 #include <list>
 #include <algorithm>
 #include <ctime>
@@ -15,8 +15,8 @@ void	display(const T& container)
 	std::cout << std::endl;
 }
 
-int				checkInput(std::string input);
-std::deque<int>	input2deque(std::string input);
-std::list<int>	input2list(std::string input);
+int					checkInput(std::string input);
+std::vector<int>	input2vector(std::string input);
+std::list<int>		input2list(std::string input);
 
-void			mergeInsertionSort(std::deque<int>& array);
+void				mergeInsertionSort(std::vector<int>& array);

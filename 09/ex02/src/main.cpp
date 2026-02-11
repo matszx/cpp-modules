@@ -6,9 +6,11 @@ int	main(int argc, char** argv)
 		return (std::cout << "Error: need 1 arg" << std::endl, 1);
 	if (checkInput(argv[1]))
 		return (std::cout << "Error: bad arg" << std::endl, 1);
-	std::deque<int> deq = input2deque(argv[1]);
+	std::vector<int> vec = input2vector(argv[1]);
 	std::list<int>	lst = input2list(argv[1]);
-	display(deq);
+	display(vec);
 	display(lst);
+	mergeInsertionSort(vec);
+	display(vec);
 	return 0;
 }
