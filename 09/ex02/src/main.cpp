@@ -2,13 +2,20 @@
 
 int	main(int argc, char** argv)
 {
-	if (argc != 2)
-		return (std::cout << "Error: need 1 arg" << std::endl, 1);
-	if (checkInput(argv[1]))
-		return (std::cout << "Error: bad arg" << std::endl, 1);
+	std::string	args;
 
-	std::vector<int>	vec = input2vector(argv[1]);
-	std::list<int>		lst = input2list(argv[1]);
+	if (argc < 2)
+		return (std::cout << "Error: need 1 arg" << std::endl, 1);
+
+	for (int i = 1; i < argc; i++)
+	{
+		if (checkInput(argv[i]))
+			return (std::cout << "Error: bad arg" << std::endl, 1);
+		args += argv[i];
+		args += " ";
+	}
+	std::vector<int>	vec = input2vector(args);
+	std::list<int>		lst = input2list(args);
 
 	std::cout << "Before (vector): ";
 	display(vec);
