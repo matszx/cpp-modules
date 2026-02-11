@@ -2,11 +2,10 @@
 
 int	main(int argc, char** argv)
 {
-	std::string	args;
-
 	if (argc < 2)
 		return (std::cout << "Error: need 1 arg" << std::endl, 1);
 
+	std::string	args;
 	for (int i = 1; i < argc; i++)
 	{
 		if (checkInput(argv[i]))
