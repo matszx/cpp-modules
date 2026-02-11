@@ -15,7 +15,6 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange& src);
 		~BitcoinExchange();
 		BitcoinExchange&	operator=(const BitcoinExchange& src);
-
 		int		initTable();
 		double	getRate(std::string date);
 		int		runExchange(std::string filename);
