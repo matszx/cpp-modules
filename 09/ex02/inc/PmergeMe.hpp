@@ -2,9 +2,9 @@
 
 #include <iostream>
 #include <sstream>
+#include <cstdlib>
 #include <vector>
 #include <list>
-#include <algorithm>
 #include <ctime>
 
 template <typename T>
