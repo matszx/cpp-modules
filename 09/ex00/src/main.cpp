@@ -2,7 +2,6 @@
 
 int	main(int argc, char** argv)
 {
-	(void)argv;
 	if (argc != 2)
 	{
 		std::cout << "Error" << std::endl;
@@ -10,8 +9,6 @@ int	main(int argc, char** argv)
 	}
 	BitcoinExchange	btc;
 	btc.initTable();
-	std::map<std::string,double>::iterator	it;
-	for (it = (btc.getTable()).begin(); it != (btc.getTable()).end(); it++)
-		std::cout << it->first << " | " << it->second << std::endl;
+	btc.runExchange(argv[1]);
 	return 0;
 }

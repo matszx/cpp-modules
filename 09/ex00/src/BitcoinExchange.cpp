@@ -1,6 +1,6 @@
 #include "../inc/BitcoinExchange.hpp"
 
-std::string	trim(std::string str)
+static std::string	trim(std::string str)
 {
 	std::string::iterator begin = str.begin();
 	while (begin != str.end() && isspace(*begin))
@@ -33,10 +33,8 @@ void	BitcoinExchange::initTable()
 	std::string			line, key, value;
 
 	if (!file.is_open())
-		throw CantOpenDatabase();
+		throw CantOpenFile();
 	std::getline(file, line);
-	if (line != "date,exchange_rate")
-		throw DatabaseFormatError();
 	while (std::getline(file, line))
 	{
 		std::istringstream ss(line);
@@ -45,8 +43,48 @@ void	BitcoinExchange::initTable()
 		key = trim(key);
 		value = trim(value);
 		if (key.empty() || value.empty())
-			throw DatabaseFormatError();
+			throw FileFormatError();
 		_table[key] = atof(value.c_str());
+	}
+	file.close();
+}
+
+double	BitcoinExchange::getRate(std::string date)
+{
+	double last = _table.begin()->second;
+	std::map<std::string,double>::iterator it = _table.begin();
+	while (it != _table.end() && it->first <= date)
+		last = (it++)->second;
+	return last;
+}
+
+static int	handle_error(std::string key, std::string value)
+{
+	(void)key;
+	(void)value;
+	return 0;
+}
+
+void	BitcoinExchange::runExchange(std::string filename)
+{
+	std::ifstream		file(filename.c_str());
+	std::string			line, key, value;
+
+	if (!file.is_open())
+		throw CantOpenFile();
+	std::getline(file, line);
+	while (std::getline(file, line))
+	{
+		std::istringstream ss(line);
+		std::getline(ss, key, '|');
+		std::getline(ss, value);
+		key = trim(key);
+		value = trim(value);
+		if (!handle_error(key, value))
+		{
+			std::cout << key << " => " << value << " = ";
+			std::cout << atof(value.c_str()) * getRate(key) << std::endl;
+		}
 	}
 	file.close();
 }
@@ -56,12 +94,12 @@ std::map<std::string,double>&	BitcoinExchange::getTable()
 	return _table;
 }
 
-const char* BitcoinExchange::CantOpenDatabase::what() const throw()
+const char* BitcoinExchange::CantOpenFile::what() const throw()
 {
-	return "CantOpenDatabase";
+	return "CantOpenFile";
 }
 
-const char* BitcoinExchange::DatabaseFormatError::what() const throw()
+const char* BitcoinExchange::FileFormatError::what() const throw()
 {
-	return "DatabaseFormatError";
+	return "FileFormatError";
 }

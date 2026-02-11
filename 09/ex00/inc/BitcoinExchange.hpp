@@ -9,14 +9,6 @@
 #include <cmath>
 #include <exception>
 
-struct s_entry
-{
-	int	year;
-	int	month;
-	int	date;
-	int	value;
-};
-
 class BitcoinExchange
 {
 	private:
@@ -28,13 +20,15 @@ class BitcoinExchange
 		BitcoinExchange&	operator=(const BitcoinExchange& src);
 
 		void	initTable();
+		double	getRate(std::string date);
+		void	runExchange(std::string filename);
 		std::map<std::string,double>&	getTable();
 
-	class CantOpenDatabase: public std::exception
+	class CantOpenFile: public std::exception
 	{
 		const char*	what() const throw();
 	};
-	class DatabaseFormatError: public std::exception
+	class FileFormatError: public std::exception
 	{
 		const char*	what() const throw();
 	};
