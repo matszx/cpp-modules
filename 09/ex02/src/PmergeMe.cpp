@@ -32,7 +32,7 @@ std::list<int>	input2list(std::string input)
 	return c;
 }
 
-void	mergeInsertionSort(std::vector<int>& c)
+void	mergeInsertionSortVector(std::vector<int>& c)
 {
 	std::vector<int>	small;
 	std::vector<int>	large;
@@ -44,6 +44,7 @@ void	mergeInsertionSort(std::vector<int>& c)
 		return;
 	if (c.size() == 2)
 	{
+
 		if (c[0] > c[1])
 			std::swap(c[0], c[1]);
 		return;
@@ -57,7 +58,7 @@ void	mergeInsertionSort(std::vector<int>& c)
 		large.push_back(std::max(*it, *(it + 1)));
 		it += 2;
 	}
-	mergeInsertionSort(large);
+	mergeInsertionSortVector(large);
 	res = large;
 
 	for (size_t i = 0; i < small.size(); i++)
@@ -75,4 +76,52 @@ void	mergeInsertionSort(std::vector<int>& c)
 		res.insert(pos, save);
 	}
 	c = res;
+}
+
+void mergeInsertionSortList(std::list<int>& c)
+{
+    std::list<int>	small, large, res;
+    int save = -1;
+
+    if (c.size() == 1)
+        return;
+    if (c.size() == 2)
+    {
+        std::list<int>::iterator it = c.begin();
+		std::list<int>::iterator next = (++it);
+        if (*it > *next)
+			std::swap(*it, *next);
+        return;
+    }
+
+    std::list<int>::iterator it = c.begin();
+    if (c.size() % 2)
+        save = *(it++);
+    while (it != c.end())
+    {
+		std::list<int>::iterator next = it;
+		next++;
+        small.push_back(std::min(*it, *next));
+        large.push_back(std::max(*it, *next));
+        it++;
+		it++;
+    }
+    mergeInsertionSortList(large);
+    res = large;
+
+    for (std::list<int>::iterator small_it = small.begin(); small_it != small.end(); small_it++)
+    {
+        std::list<int>::iterator pos = res.begin();
+        while (pos != res.end() && *pos <= *small_it)
+            pos++;
+        res.insert(pos, *small_it);
+    }
+    if (c.size() % 2)
+    {
+        std::list<int>::iterator pos = res.begin();
+        while (pos != res.end() && *pos <= save)
+            pos++;
+        res.insert(pos, save);
+    }
+    c = res;
 }
