@@ -9,7 +9,7 @@ int	main(int argc, char** argv)
 	std::vector<int> vec = input2vector(argv[1]);
 	std::list<int>	lst = input2list(argv[1]);
 	display(vec);
-	display(lst);
+	//display(lst);
 	mergeInsertionSort(vec);
 	display(vec);
 	return 0;
