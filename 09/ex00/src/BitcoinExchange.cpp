@@ -1,17 +1,5 @@
 #include "../inc/BitcoinExchange.hpp"
 
-static std::string	trim(std::string str)
-{
-	std::string::iterator begin = str.begin();
-	while (begin != str.end() && isspace(*begin))
-		begin++;
-	std::string::iterator end = str.end();
-	end--;
-	while (end != begin && isspace(*end))
-		end--;
-	return std::string(begin, end + 1);
-}
-
 BitcoinExchange::BitcoinExchange() {}
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& src)
@@ -27,13 +15,25 @@ BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& src)
 	return *this;
 }
 
-void	BitcoinExchange::initTable()
+static std::string	trim(std::string str)
+{
+	std::string::iterator begin = str.begin();
+	while (begin != str.end() && isspace(*begin))
+		begin++;
+	std::string::iterator end = str.end();
+	end--;
+	while (end != begin && isspace(*end))
+		end--;
+	return std::string(begin, end + 1);
+}
+
+int	BitcoinExchange::initTable()
 {
 	std::ifstream		file("data.csv");
 	std::string			line, key, value;
 
 	if (!file.is_open())
-		throw CantOpenFile();
+		return 1;
 	std::getline(file, line);
 	while (std::getline(file, line))
 	{
@@ -43,10 +43,11 @@ void	BitcoinExchange::initTable()
 		key = trim(key);
 		value = trim(value);
 		if (key.empty() || value.empty())
-			throw FileFormatError();
+			return 1;
 		_table[key] = atof(value.c_str());
 	}
 	file.close();
+	return 0;
 }
 
 double	BitcoinExchange::getRate(std::string date)
@@ -65,13 +66,13 @@ static int	handle_error(std::string key, std::string value)
 	return 0;
 }
 
-void	BitcoinExchange::runExchange(std::string filename)
+int	BitcoinExchange::runExchange(std::string filename)
 {
 	std::ifstream		file(filename.c_str());
 	std::string			line, key, value;
 
 	if (!file.is_open())
-		throw CantOpenFile();
+		return 1;
 	std::getline(file, line);
 	while (std::getline(file, line))
 	{
@@ -87,19 +88,5 @@ void	BitcoinExchange::runExchange(std::string filename)
 		}
 	}
 	file.close();
-}
-
-std::map<std::string,double>&	BitcoinExchange::getTable()
-{
-	return _table;
-}
-
-const char* BitcoinExchange::CantOpenFile::what() const throw()
-{
-	return "CantOpenFile";
-}
-
-const char* BitcoinExchange::FileFormatError::what() const throw()
-{
-	return "FileFormatError";
+	return 0;
 }

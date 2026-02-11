@@ -8,7 +8,7 @@ int	main(int argc, char** argv)
 		return 1;
 	}
 	BitcoinExchange	btc;
-	btc.initTable();
-	btc.runExchange(argv[1]);
+	if (btc.initTable() || btc.runExchange(argv[1]))
+		return (std::cout << "File error" << std::endl, 1);
 	return 0;
 }
