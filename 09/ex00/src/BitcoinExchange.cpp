@@ -61,6 +61,13 @@ double	BitcoinExchange::getRate(std::string date)
 
 static int	validateDate(std::string date)
 {
+	if (date.length() != 10 \
+		|| !isdigit(date[0]) || !isdigit(date[1]) || !isdigit(date[2]) || !isdigit(date[3]) \
+		|| date[4] != '-' || !isdigit(date[5]) || !isdigit(date[6]) \
+		|| date[7] != '-' || !isdigit(date[8]) || !isdigit(date[9]))
+		return 1;
+
+	int	year = atoi(date.substr(0, 4).c_str());
 	int	month = atoi(date.substr(5, 2).c_str());
 	int	day = atoi(date.substr(8, 2).c_str());
 
@@ -70,23 +77,34 @@ static int	validateDate(std::string date)
 		return 1;
 	if (month == 2 && day > 28)
 	{
-		if (day == 29 && !(atoi(date.substr(0, 4).c_str()) % 4))
+		if (!(year % 4) && day == 29)
 			return 0;
 		return 1;
 	}
 	return 0;
 }
 
+static int	validateValue(std::string value)
+{
+	char*		endptr;
+	const char*	value_c_str = value.c_str();
+	double		val = strtod(value_c_str, &endptr);
+
+	if (endptr != value_c_str + value.length())
+		return 1;
+	if (val < 0.0 || val > 1000.0)
+		return 1;
+	return 0;
+}
+
 static int	handle_error(std::string key, std::string value)
 {
-	double	val = atof(value.c_str());
-
 	if (key.empty() || value.empty())
-		std::cout << "Error: empty value" << std::endl;
+		std::cout << "Error: field empty" << std::endl;
 	else if (validateDate(key))
-		std::cout << "Error: invalid date" << std::endl;
-	else if (val < 0.0 || val > 1000.0)
-		std::cout << "Error: value out of range" << std::endl;
+		std::cout << "Error: date invalid" << std::endl;
+	else if (validateValue(value))
+		std::cout << "Error: value invalid" << std::endl;
 	else
 		return 0;
 	return 1;
