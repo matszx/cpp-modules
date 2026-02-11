@@ -26,12 +26,12 @@ int	main(int argc, char** argv)
 	std::clock_t start1 = std::clock();
 	mergeInsertionSortVector(vec);
 	std::clock_t end1 = std::clock();
-	double vector_elapsed = 1000000 * static_cast<double>(end1 - start1) / CLOCKS_PER_SEC;
+	std::clock_t vector_elapsed = end1 - start1;
 
 	std::clock_t start2 = std::clock();
 	mergeInsertionSortList(lst);
 	std::clock_t end2 = std::clock();
-	double list_elapsed = 1000000 * static_cast<double>(end2 - start2) / CLOCKS_PER_SEC;
+	std::clock_t list_elapsed = end2 - start2;
 
 	std::cout << "After (vector): ";
 	display(vec);
